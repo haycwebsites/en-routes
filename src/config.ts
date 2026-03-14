@@ -494,7 +494,7 @@ export const notFoundConfig: NotFoundConfig = {
   code: { el: '404', en: '404' },
   title: { el: 'Η σελίδα δεν βρέθηκε', en: 'Page Not Found' },
   description: { el: 'Η σελίδα που αναζητάτε ενδέχεται να έχει αφαιρεθεί, να άλλαξε το όνομά της ή να μην είναι προσωρινά διαθέσιμη.', en: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' },
-  backButton: { el: 'Επιστροφή στην Αρχική', en: 'Back to Home' },
+  backButton: { el: 'Επιστροφή στην Αρχική Σελίδα', en: 'Back to Home Page' },
 };
 
 export const roomPageConfig: RoomPageConfig = {
