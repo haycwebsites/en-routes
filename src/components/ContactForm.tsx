@@ -5,41 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 
-// test
-
-const labels = {
-  nameLabel: { el: 'Όνομα', en: 'Name' },
-  emailLabel: { el: 'Email', en: 'Email' },
-  messageLabel: { el: 'Μήνυμα', en: 'Message' },
-  submitButton: { el: 'Αποστολή', en: 'Send Message' },
-  submitting: { el: 'Αποστολή...', en: 'Sending...' },
-  successTitle: { el: 'Το μήνυμά σας στάλθηκε!', en: 'Message sent!' },
-  successText: {
-    el: 'Θα επικοινωνήσουμε μαζί σας σύντομα.',
-    en: 'We will get back to you shortly.',
-  },
-  errorText: {
-    el: 'Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.',
-    en: 'Something went wrong. Please try again.',
-  },
-  nameRequired: {
-    el: 'Το όνομα είναι υποχρεωτικό.',
-    en: 'Name is required.',
-  },
-  emailInvalid: {
-    el: 'Εισάγετε έγκυρο email.',
-    en: 'Please enter a valid email.',
-  },
-  messageRequired: {
-    el: 'Το μήνυμα είναι υποχρεωτικό.',
-    en: 'Message is required.',
-  },
-};
-
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactForm() {
-  const { t, config } = useHayc();
+  const { t, config, cp } = useHayc();
+  const labels = config.contactFormConfig;
   const siteId = config.siteConfig.siteId;
   const apiUrl = config.siteConfig.apiUrl;
 
@@ -63,7 +33,7 @@ export function ContactForm() {
     if (!message.trim()) errors.message = t(labels.messageRequired);
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
-  }, [name, email, message, t]);
+  }, [name, email, message, t, labels]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -97,14 +67,14 @@ export function ContactForm() {
         setLoading(false);
       }
     },
-    [apiUrl, siteId, name, email, message, hp, validate, t]
+    [apiUrl, siteId, name, email, message, hp, validate, t, labels]
   );
 
   if (submitted) {
     return (
       <div className="space-y-2 text-center">
-        <h3 className="text-lg font-semibold">{t(labels.successTitle)}</h3>
-        <p className="text-muted-foreground text-sm">{t(labels.successText)}</p>
+        <h3 className="text-lg font-semibold" {...cp('contactFormConfig.successTitle')}>{t(labels.successTitle)}</h3>
+        <p className="text-muted-foreground text-sm" {...cp('contactFormConfig.successText')}>{t(labels.successText)}</p>
       </div>
     );
   }
@@ -123,7 +93,7 @@ export function ContactForm() {
       />
 
       <div className="grid gap-2">
-        <Label htmlFor="contact-name">{t(labels.nameLabel)}</Label>
+        <Label htmlFor="contact-name" {...cp('contactFormConfig.nameLabel')}>{t(labels.nameLabel)}</Label>
         <Input
           id="contact-name"
           type="text"
@@ -144,7 +114,7 @@ export function ContactForm() {
       </div>
 
       <div className="grid gap-2">
-        <Label htmlFor="contact-email">{t(labels.emailLabel)}</Label>
+        <Label htmlFor="contact-email" {...cp('contactFormConfig.emailLabel')}>{t(labels.emailLabel)}</Label>
         <Input
           id="contact-email"
           type="email"
@@ -165,7 +135,7 @@ export function ContactForm() {
       </div>
 
       <div className="grid gap-2">
-        <Label htmlFor="contact-message">{t(labels.messageLabel)}</Label>
+        <Label htmlFor="contact-message" {...cp('contactFormConfig.messageLabel')}>{t(labels.messageLabel)}</Label>
         <Textarea
           id="contact-message"
           value={message}
@@ -185,7 +155,7 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" disabled={loading} className="w-full">
+      <Button type="submit" disabled={loading} className="w-full" {...cp('contactFormConfig.submitButton')}>
         {loading ? t(labels.submitting) : t(labels.submitButton)}
       </Button>
 

@@ -1,7 +1,35 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { siteConfig } from '../src/config.js';
+import {
+  siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
+} from '../src/config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +38,32 @@ const config = {
   version: 1,
   exportedAt: new Date().toISOString(),
   siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
 };
 
 const projectRoot = path.resolve(__dirname, '../../');

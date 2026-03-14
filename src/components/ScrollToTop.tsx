@@ -3,11 +3,9 @@ import { ArrowUp } from 'lucide-react';
 import { useHayc } from '../hayc/config-context';
 
 export function ScrollToTop() {
-  const { t, config } = useHayc();
+  const { t, config, cp } = useHayc();
   const scrollToTopConfig = config.scrollToTopConfig;
-
-  // Null check: if config is empty, render nothing
-  if (!scrollToTopConfig.ariaLabel) return null;
+  const ariaLabel = scrollToTopConfig?.ariaLabel ? t(scrollToTopConfig.ariaLabel) : 'Scroll to top';
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,12 +24,13 @@ export function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      aria-label={t(scrollToTopConfig.ariaLabel)}
+      aria-label={ariaLabel}
       className={`fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gold-500/90 text-white flex items-center justify-center shadow-lg shadow-gold-500/20 backdrop-blur-sm transition-all duration-300 hover:bg-gold-500 hover:scale-110 ${
         isVisible
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
+      {...cp('scrollToTopConfig.ariaLabel')}
     >
       <ArrowUp className="w-5 h-5" />
     </button>
