@@ -248,6 +248,16 @@
     transition: all 400ms ease-out;
   }
 
+  /* About page icon float – Vayo-style subtle motion */
+  @keyframes icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .icon-float {
+    animation: icon-float 3s ease-in-out infinite;
+  }
+
   /* Preloader animation */
   @keyframes preloader-fade {
     0% { opacity: 0; transform: translateY(10px); }
@@ -315,5 +325,34 @@
       padding-left: 2rem;
       padding-right: 2rem;
     }
+  }
+
+  /* Section reveal: fade-in-up on load with optional stagger */
+  .section-reveal {
+    opacity: 0;
+    animation: section-reveal 0.6s ease-out forwards;
+  }
+  .section-reveal-delay-1 { animation-delay: 0.08s; }
+  .section-reveal-delay-2 { animation-delay: 0.16s; }
+  .section-reveal-delay-3 { animation-delay: 0.24s; }
+  .section-reveal-delay-4 { animation-delay: 0.32s; }
+  @keyframes section-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Card hover: lift, shadow, smooth transition */
+  .card-hover {
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
   }
 }

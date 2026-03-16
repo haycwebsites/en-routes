@@ -2,6 +2,7 @@ import { PageHero } from '@/components/PageHero';
 import { ContactForm } from '@/components/ContactForm';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { useHayc } from '@/hayc/config-context';
+import { innerPageHeroImages } from '@/config';
 
 export function ContactPage() {
   const { t, config, cp } = useHayc();
@@ -9,8 +10,8 @@ export function ContactPage() {
 
   return (
     <>
-      <PageHero title={t(c.pageTitle)} titleConfigPath="contactPageConfig.pageTitle" breadcrumbs={[{ label: t(c.breadcrumb), configPath: 'contactPageConfig.breadcrumb' }]} />
-      <section className="section-padding">
+      <PageHero title={t(c.pageTitle)} titleConfigPath="contactPageConfig.pageTitle" breadcrumbs={[{ label: t(c.breadcrumb), configPath: 'contactPageConfig.breadcrumb' }]} backgroundImage={innerPageHeroImages.contact} />
+      <section className="section-padding section-reveal">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
@@ -40,7 +41,7 @@ export function ContactPage() {
                 </li>
               </ul>
             </div>
-            <div className="rounded-lg border border-white/10 p-8 bg-gray-900/50">
+            <div className="card-hover rounded-lg border border-white/10 p-8 bg-gray-900/50 hover:border-[var(--gold-500)]/30">
               <h3 className="font-serif text-xl text-white mb-6" {...cp('contactPageConfig.sendMessage')}>{t(c.sendMessage)}</h3>
               <ContactForm />
             </div>

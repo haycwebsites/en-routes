@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Wine } from 'lucide-react';
+import { Plane } from 'lucide-react';
 import { useHayc } from '../hayc/config-context';
 
 export function Preloader({ onComplete }: { onComplete: () => void }) {
@@ -30,7 +30,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       }`}
     >
       <div className="preloader-text mb-6">
-        <Wine className="w-12 h-12 text-gold-500" />
+        <Plane className="w-12 h-12 text-gold-500" />
       </div>
       <div className="preloader-text text-center" style={{ animationDelay: '0.2s' }}>
         <h1 className="font-serif text-3xl md:text-4xl text-white tracking-wide mb-2" {...cp('preloaderConfig.brandName')}>

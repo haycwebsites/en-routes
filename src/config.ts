@@ -11,11 +11,9 @@
 // =============================================================================
 // INTERFACES
 // =============================================================================
-
-export interface LocaleString {
-  el: string;
-  en: string;
-}
+// Site is English-only. LocaleString is kept as a type alias for string
+// so existing interfaces and t() continue to work without changes.
+export type LocaleString = string;
 
 export interface SiteConfig {
   title: LocaleString;
@@ -53,6 +51,8 @@ export interface NavigationConfig {
   blogSingleLeft: LocaleString;
   blogSingleFullwidth: LocaleString;
   contact: LocaleString;
+  socialResponsibility: LocaleString;
+  bookButton: LocaleString;
 }
 
 export interface FooterConfig {
@@ -93,8 +93,22 @@ export interface PageHeroConfig {
 export interface HeroConfig {
   mainTitle: LocaleString;
   subtitle: LocaleString;
-  bookRoomButton: LocaleString;
+  cta: LocaleString;
   heroImage: string;
+}
+
+export interface HomeHeroCardConfig {
+  image: string;
+  title: LocaleString;
+  tagline: LocaleString;
+  learnMore: LocaleString;
+}
+
+export interface HomeServicesSectionConfig {
+  eyebrow: LocaleString;
+  title: LocaleString;
+  subtitle: LocaleString;
+  onlineBooking: LocaleString;
 }
 
 export interface SearchConfig {
@@ -140,8 +154,19 @@ export interface HomeTestimonialsConfig {
 export interface HomeBlogConfig {
   eyebrow: LocaleString;
   title: LocaleString;
+  subtitle: LocaleString;
   continue: LocaleString;
-  items: { title: LocaleString; category: LocaleString; date: LocaleString }[];
+  items: { title: LocaleString; category: LocaleString; date: LocaleString; image?: string }[];
+}
+
+export interface HomeFeaturedConfig {
+  eyebrow: LocaleString;
+  title: LocaleString;
+  subtitle: LocaleString;
+  body: LocaleString;
+  cta: LocaleString;
+  ctaLink: string;
+  image: string;
 }
 
 export interface ContactFormConfig {
@@ -175,11 +200,55 @@ export interface ContactPageConfig {
 export interface AboutPageConfig {
   pageTitle: LocaleString;
   breadcrumb: LocaleString;
-  eyebrow: LocaleString;
-  title: LocaleString;
-  body1: LocaleString;
-  body2: LocaleString;
-  exploreRoomsButton: LocaleString;
+  welcomeTitle: LocaleString;
+  welcomeSubtitle: LocaleString;
+  luxuryTitle: LocaleString;
+  luxuryDesc: LocaleString;
+  customizedTitle: LocaleString;
+  customizedDesc: LocaleString;
+  comfortTitle: LocaleString;
+  comfortDesc: LocaleString;
+  detailTitle: LocaleString;
+  detailDesc: LocaleString;
+  philosophyTitle: LocaleString;
+  philosophyBody: LocaleString;
+  valuesTitle: LocaleString;
+  valueSafety: LocaleString;
+  valueCourtesy: LocaleString;
+  valueReliability: LocaleString;
+  valueSustainability: LocaleString;
+  valueInnovation: LocaleString;
+  peopleTitle: LocaleString;
+  peopleBody: LocaleString;
+  exploreServicesButton: LocaleString;
+}
+
+export interface SocialResponsibilityPageConfig {
+  pageTitle: LocaleString;
+  breadcrumb: LocaleString;
+  subtitle: LocaleString;
+  meaningTitle: LocaleString;
+  meaningBody: LocaleString;
+  achieveTitle: LocaleString;
+  achieveBody: LocaleString;
+  peopleTitle: LocaleString;
+  peopleBody: LocaleString;
+  teamTitle: LocaleString;
+  teamBody: LocaleString;
+  customersTitle: LocaleString;
+  customersBody: LocaleString;
+  accessibilityBody: LocaleString;
+  offerTitle: LocaleString;
+  solidarityTitle: LocaleString;
+  solidarityBody: LocaleString;
+  environmentTitle: LocaleString;
+  environmentBody: LocaleString;
+  hybridTitle: LocaleString;
+  hybridBody: LocaleString;
+  routesTitle: LocaleString;
+  routesBody: LocaleString;
+  whyTitle: LocaleString;
+  whyBody: LocaleString;
 }
 
 export interface FaqConfig {
@@ -248,7 +317,7 @@ export interface BlogPageConfig {
   pageTitle: LocaleString;
   breadcrumb: LocaleString;
   readMore: LocaleString;
-  items: { title: LocaleString; category: LocaleString; date: LocaleString }[];
+  items: { title: LocaleString; category: LocaleString; date: LocaleString; excerpt: LocaleString; image?: string }[];
 }
 
 export interface BlogLeftPageConfig {
@@ -273,7 +342,7 @@ export interface BlogSinglePageConfig {
   breadcrumbBlog: LocaleString;
   breadcrumbSingle: LocaleString;
   backToBlog: LocaleString;
-  item: { title: LocaleString; category: LocaleString; date: LocaleString; body1: LocaleString; body2: LocaleString; body3: LocaleString };
+  item: { title: LocaleString; category: LocaleString; date: LocaleString; body1: LocaleString; body2: LocaleString; body3: LocaleString; image?: string };
 }
 
 export interface PreloaderConfig {
@@ -286,15 +355,55 @@ export interface ScrollToTopConfig {
   ariaLabel: LocaleString;
 }
 
+export interface BookingPageConfig {
+  pageTitle: LocaleString;
+  breadcrumb: LocaleString;
+  step1: LocaleString;
+  step2: LocaleString;
+  step3: LocaleString;
+  step4: LocaleString;
+  pickupLabel: LocaleString;
+  destinationLabel: LocaleString;
+  dateLabel: LocaleString;
+  timeLabel: LocaleString;
+  returnTripLabel: LocaleString;
+  returnSectionTitle: LocaleString;
+  returnPickupLabel: LocaleString;
+  returnDestinationLabel: LocaleString;
+  returnDateLabel: LocaleString;
+  returnTimeLabel: LocaleString;
+  pickupPlaceholder: LocaleString;
+  destinationPlaceholder: LocaleString;
+  adultsLabel: LocaleString;
+  childrenLabel: LocaleString;
+  passengersLabel: LocaleString;
+  fullNameLabel: LocaleString;
+  emailLabel: LocaleString;
+  phoneLabel: LocaleString;
+  notesLabel: LocaleString;
+  loadingVehicles: LocaleString;
+  noVehiclesFound: LocaleString;
+  priceLabel: LocaleString;
+  priceOnRequest: LocaleString;
+  nextStep: LocaleString;
+  prevStep: LocaleString;
+  submitBooking: LocaleString;
+  successTitle: LocaleString;
+  successMessage: LocaleString;
+  bookingNumberLabel: LocaleString;
+  tryAgain: LocaleString;
+  newBooking: LocaleString;
+}
+
 // =============================================================================
 // CONSTANTS
 // =============================================================================
 
 export const siteConfig: SiteConfig = {
-  title: { el: 'En-Routes', en: 'En-Routes' },
-  description: { el: '', en: '' },
+  title: 'En-Routes',
+  description: '',
   language: 'en',
-  keywords: { el: '', en: '' },
+  keywords: '',
   ogImage: '',
   canonical: '',
   siteId: '',
@@ -302,349 +411,478 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navigationConfig: NavigationConfig = {
-  brandName: { el: 'En-Routes', en: 'En-Routes' },
-  phone: '+0123-456-789',
-  searchAriaLabel: { el: 'Αναζήτηση', en: 'Search' },
-  openMenuAriaLabel: { el: 'Άνοιγμα μενού', en: 'Open menu' },
-  closeMenuAriaLabel: { el: 'Κλείσιμο μενού', en: 'Close menu' },
-  home: { el: 'Αρχική', en: 'Home' },
-  homeStyle2: { el: 'Αρχική Στυλ 2', en: 'Home Style 2' },
-  homeStyle3: { el: 'Αρχική Στυλ 3', en: 'Home Style 3' },
-  room: { el: 'Δωμάτια', en: 'Room' },
-  roomSingle: { el: 'Δωμάτιο Single', en: 'Room Single' },
-  destination: { el: 'Προορισμός', en: 'Destination' },
-  pages: { el: 'Σελίδες', en: 'Pages' },
-  about: { el: 'Σχετικά', en: 'About' },
-  faq: { el: 'Συχνές Ερωτήσεις', en: 'FAQ' },
-  page404: { el: '404', en: '404' },
-  service: { el: 'Υπηρεσίες', en: 'Service' },
-  serviceSingle: { el: 'Υπηρεσία Single', en: 'Service Single' },
-  blog: { el: 'Blog', en: 'Blog' },
-  blogLeftSidebar: { el: 'Blog Left Sidebar', en: 'Blog Left Sidebar' },
-  blogFullWidth: { el: 'Blog Full Width', en: 'Blog Full Width' },
-  blogSingle: { el: 'Blog Single', en: 'Blog Single' },
-  blogSingleLeft: { el: 'Blog Single Left', en: 'Blog Single Left' },
-  blogSingleFullwidth: { el: 'Blog Single Fullwidth', en: 'Blog Single Fullwidth' },
-  contact: { el: 'Επικοινωνία', en: 'Contact' },
+  brandName: 'En-Routes',
+  phone: '+30 694 462 9185',
+  searchAriaLabel: 'Search',
+  openMenuAriaLabel: 'Open menu',
+  closeMenuAriaLabel: 'Close menu',
+  home: 'Home',
+  homeStyle2: 'Home Style 2',
+  homeStyle3: 'Home Style 3',
+  room: 'Room',
+  roomSingle: 'Room Single',
+  destination: 'Destination',
+  pages: 'Pages',
+  about: 'About',
+  faq: 'FAQ',
+  page404: '404',
+  service: 'Services',
+  serviceSingle: 'Service Single',
+  blog: 'Blog',
+  blogLeftSidebar: 'Blog Left Sidebar',
+  blogFullWidth: 'Blog Full Width',
+  blogSingle: 'Blog Single',
+  blogSingleLeft: 'Blog Single Left',
+  blogSingleFullwidth: 'Blog Single Fullwidth',
+  contact: 'Contact',
+  socialResponsibility: 'Social Responsibility',
+  bookButton: 'Online Bookings',
 };
 
 export const footerConfig: FooterConfig = {
-  contactTitle: { el: 'Επικοινωνία', en: 'Contact' },
-  contactDesc: { el: 'Online store with lots of cool and exclusive features', en: 'Online store with lots of cool and exclusive features' },
-  address: { el: '28 Street, New York City, USA', en: '28 Street, New York City, USA' },
-  phone: '+000123456789',
-  email: 'Hastium@gmail.com',
-  destinationTitle: { el: 'Προορισμός', en: 'Destination' },
-  destination1Name: { el: 'Paris, France', en: 'Paris, France' },
-  destination1Date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' },
+  contactTitle: 'Contact',
+  contactDesc: 'Transfers and tours with comfort and reliability.',
+  address: 'Greece',
+  phone: '+30 694 462 9185',
+  email: 'info@en-routes.gr',
+  destinationTitle: 'Destination',
+  destination1Name: 'Paris, France',
+  destination1Date: '11 Jun 2020 - 22 Jun 2020',
   destination1Price: '$835',
-  destination2Name: { el: 'San Francisco', en: 'San Francisco' },
-  destination2Date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' },
+  destination2Name: 'San Francisco',
+  destination2Date: '11 Jun 2020 - 22 Jun 2020',
   destination2Price: '$835',
-  usefulLinksTitle: { el: 'Useful Links', en: 'Useful Links' },
-  aboutUs: { el: 'About Us', en: 'About Us' },
-  ourOffers: { el: 'Our Offers', en: 'Our Offers' },
-  howSpread: { el: 'How Spread', en: 'How Spread' },
-  contactUs: { el: 'Contact Us', en: 'Contact Us' },
-  ourEvent: { el: 'Our Event', en: 'Our Event' },
-  newsletterTitle: { el: 'Newsletter', en: 'Newsletter' },
-  emailPlaceholder: { el: 'Email Address *', en: 'Email Address *' },
-  subscribeButton: { el: 'Subscribe', en: 'Subscribe' },
-  facebookAriaLabel: { el: 'Facebook', en: 'Facebook' },
-  twitterAriaLabel: { el: 'Twitter', en: 'Twitter' },
-  instagramAriaLabel: { el: 'Instagram', en: 'Instagram' },
-  privacyPolicy: { el: 'Privacy Policy', en: 'Privacy Policy' },
-  termsConditions: { el: 'Terms & Conditions', en: 'Terms & Conditions' },
-  cookies: { el: 'Cookies', en: 'Cookies' },
-  copyright: { el: 'En-Routes. All rights reserved', en: 'En-Routes. All rights reserved' },
+  usefulLinksTitle: 'Useful Links',
+  aboutUs: 'About Us',
+  ourOffers: 'Services',
+  howSpread: 'Social Responsibility',
+  contactUs: 'Contact',
+  ourEvent: 'Blog',
+  newsletterTitle: 'Newsletter',
+  emailPlaceholder: 'Email Address *',
+  subscribeButton: 'Subscribe',
+  facebookAriaLabel: 'Facebook',
+  twitterAriaLabel: 'Twitter',
+  instagramAriaLabel: 'Instagram',
+  privacyPolicy: 'Privacy Policy',
+  termsConditions: 'Terms & Conditions',
+  cookies: 'Cookies',
+  copyright: 'En-Routes. All rights reserved',
 };
 
 export const pageHeroConfig: PageHeroConfig = {
-  homeBreadcrumb: { el: 'Αρχική', en: 'Home' },
+  homeBreadcrumb: 'Home',
 };
 
+// Greece-only images: verified Unsplash IDs (Santorini, Meteora, Acropolis/Parthenon Athens)
+const GREECE_IMAGES = {
+  santorini: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80',
+  meteora: 'https://images.unsplash.com/photo-1660386064971-d5870803764a?w=1920&q=80',
+  acropolis: 'https://images.unsplash.com/photo-1741791415725-2010d94f5987?w=1920&q=80',
+  parthenon: 'https://images.unsplash.com/photo-1767907573610-6f1d6c501d6f?w=1920&q=80',
+} as const;
+
+/** Hero background images for inner pages — distinct from home/cards; Vayo-style (roads, coasts, landscapes) */
+const INNER_PAGE_HERO_IMAGES = {
+  /** Road through valley — transfer/journey (Meteora area) */
+  services: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
+  /** Greek coastal town — Paros */
+  blog: 'https://images.unsplash.com/photo-1753441034632-50d3137f0799?w=1920&q=80',
+  /** Mountain with village — welcoming destination */
+  contact: 'https://images.unsplash.com/photo-1688680292966-a8ba3a39d0ab?w=1920&q=80',
+  /** Green hills and mountains — Greece landscape */
+  about: 'https://images.unsplash.com/photo-1596199567658-0b13465b0a80?w=1920&q=80',
+  /** Mountain and lake — nature/sustainability */
+  socialResponsibility: 'https://images.unsplash.com/photo-1704472546450-2fd83176d216?w=1920&q=80',
+  /** Book page — journey/transfer (same road vibe as services) */
+  booking: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
+} as const;
+
+export const innerPageHeroImages = INNER_PAGE_HERO_IMAGES;
+
+// Blog post images matched to content (verified Unsplash IDs)
+const BLOG_CONTENT_IMAGES = {
+  hikingActivity: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80',
+  sunsetPeloponnese: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+  picnicCountryside: 'https://images.unsplash.com/photo-1596050501744-c1721ab5ee11?w=800&q=80',
+  hikingTrails: 'https://images.unsplash.com/photo-1643386165206-d1be6dcc76c2?w=800&q=80',
+} as const;
+
 export const heroConfig: HeroConfig = {
-  mainTitle: { el: 'The Varaus Hotel & Resort', en: 'The Varaus Hotel & Resort' },
-  subtitle: { el: 'Make Your Life Better and Bright! You must trip with Us!', en: 'Make Your Life Better and Bright! You must trip with Us!' },
-  bookRoomButton: { el: 'Book A Room', en: 'Book A Room' },
-  heroImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920',
+  mainTitle: 'Welcome to En-Routes',
+  subtitle: 'Transfers and tours with comfort, reliability, and personal service.',
+  cta: 'Transfers & Tours',
+  heroImage: GREECE_IMAGES.acropolis,
+};
+
+export const homeHeroCardsConfig: HomeHeroCardConfig[] = [
+  {
+    image: GREECE_IMAGES.meteora,
+    title: 'Transfers',
+    tagline: 'Make your journey better and brighter. We are here to take you there.',
+    learnMore: 'Learn more',
+  },
+  {
+    image: GREECE_IMAGES.santorini,
+    title: 'Organized Tours',
+    tagline: 'Make your journey better and brighter. We are here to take you there.',
+    learnMore: 'Learn more',
+  },
+  {
+    image: GREECE_IMAGES.acropolis,
+    title: 'Your journey, our care',
+    tagline: 'Make your journey better and brighter. We are here to take you there.',
+    learnMore: 'Learn more',
+  },
+];
+
+export const homeServicesSectionConfig: HomeServicesSectionConfig = {
+  eyebrow: 'Services',
+  title: 'Discover our services',
+  subtitle: 'From airport transfers to guided tours, we are here to make your journey enjoyable and worry-free.',
+  onlineBooking: 'Online Bookings',
 };
 
 export const searchConfig: SearchConfig = {
-  checkIn: { el: 'Check-in', en: 'Check-in' },
-  checkOut: { el: 'Check-out', en: 'Check-out' },
-  guests: { el: 'Guests', en: 'Guests' },
-  children: { el: 'Children', en: 'Children' },
-  checkAvailability: { el: 'Check Availability', en: 'Check Availability' },
+  checkIn: 'Check-in',
+  checkOut: 'Check-out',
+  guests: 'Guests',
+  children: 'Children',
+  checkAvailability: 'Check Availability',
 };
 
 export const homeAboutConfig: HomeAboutConfig = {
-  eyebrow: { el: 'About Us', en: 'About Us' },
-  title: { el: 'A Best Place to Enjoy', en: 'A Best Place to Enjoy' },
-  body: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.' },
-  moreButton: { el: 'More About Us', en: 'More About Us' },
+  eyebrow: 'About Us',
+  title: 'Comfortable Transportation & Memorable Tours',
+  body: 'Travel and exploring aren\'t just about getting from one place to another — they\'re about the experience. With a strong focus on comfort, reliability, and personalized service, we take care of every detail to ensure your journey is smooth and enjoyable. Whether you need transportation to or from the airport or you\'re looking for a unique guided tour, we are here to make your trip relaxing, convenient, and truly memorable.',
+  moreButton: 'Online Bookings',
 };
 
 export const homeDestinationsConfig: HomeDestinationsConfig = {
-  eyebrow: { el: 'Popular Destination', en: 'Popular Destination' },
-  title: { el: 'Choose Your Country', en: 'Choose Your Country' },
-  body: { el: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.', en: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.' },
-  discoverButton: { el: 'Discover More', en: 'Discover More' },
-  perDay: { el: 'Per Day', en: 'Per Day' },
+  eyebrow: 'Popular Destination',
+  title: 'Choose Your Country',
+  body: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.',
+  discoverButton: 'Discover More',
+  perDay: 'Per Day',
   items: [
-    { name: { el: 'Paris, France', en: 'Paris, France' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$835' },
-    { name: { el: 'San Francisco', en: 'San Francisco' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$750' },
-    { name: { el: 'United Arab', en: 'United Arab' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$750' },
-    { name: { el: 'Singapore', en: 'Singapore' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$550' },
+    { name: 'Paris, France', date: '11 Jun 2020 - 22 Jun 2020', price: '$835' },
+    { name: 'San Francisco', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
+    { name: 'United Arab', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
+    { name: 'Singapore', date: '11 Jun 2020 - 22 Jun 2020', price: '$550' },
   ],
 };
 
 export const homeRoomsConfig: HomeRoomsConfig = {
-  eyebrow: { el: 'Our Rooms', en: 'Our Rooms' },
-  title: { el: 'Discover Our Rooms', en: 'Discover Our Rooms' },
-  categories: [
-    { el: 'Classic', en: 'Classic' },
-    { el: 'Budget', en: 'Budget' },
-    { el: 'Luxury', en: 'Luxury' },
-    { el: 'Double', en: 'Double' },
-    { el: 'Single', en: 'Single' },
-  ],
-  roomDescription: { el: 'If you are going to use a passage Lorem Ipsum...', en: 'If you are going to use a passage Lorem Ipsum...' },
-  fromPerNight: { el: 'From: $142 / Night', en: 'From: $142 / Night' },
-  checkAvailability: { el: 'Check Availability', en: 'Check Availability' },
+  eyebrow: 'Our Rooms',
+  title: 'Discover Our Rooms',
+  categories: ['Classic', 'Budget', 'Luxury', 'Double', 'Single'],
+  roomDescription: 'If you are going to use a passage Lorem Ipsum...',
+  fromPerNight: 'From: $142 / Night',
+  checkAvailability: 'Check Availability',
   items: [
-    { name: { el: 'Lake view Room', en: 'Lake view Room' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
-    { name: { el: 'Queen Room Balcony', en: 'Queen Room Balcony' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
-    { name: { el: 'Apartment', en: 'Apartment' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
+    { name: 'Lake view Room', type: 'Twin Room', price: 142 },
+    { name: 'Queen Room Balcony', type: 'Twin Room', price: 142 },
+    { name: 'Apartment', type: 'Twin Room', price: 142 },
   ],
 };
 
 export const homeTestimonialsConfig: HomeTestimonialsConfig = {
-  eyebrow: { el: 'What Say Clients', en: 'What Say Clients' },
-  title: { el: 'Our Clients are Important to Us', en: 'Our Clients are Important to Us' },
+  eyebrow: 'What Say Clients',
+  title: 'Our Clients are Important to Us',
   items: [
-    { quote: { el: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", en: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot." }, name: { el: 'Benjir Walton', en: 'Benjir Walton' }, location: { el: 'Singapore', en: 'Singapore' } },
-    { quote: { el: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", en: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot." }, name: { el: 'Jenefar Meera', en: 'Jenefar Meera' }, location: { el: 'Canada', en: 'Canada' } },
-    { quote: { el: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", en: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot." }, name: { el: 'Lily monalisa', en: 'Lily monalisa' }, location: { el: 'Singapore', en: 'Singapore' } },
+    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Benjir Walton', location: 'Singapore' },
+    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Jenefar Meera', location: 'Canada' },
+    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Lily monalisa', location: 'Singapore' },
   ],
 };
 
+export const homeFeaturedConfig: HomeFeaturedConfig = {
+  eyebrow: 'En-Routes',
+  title: 'Tours in Greece',
+  subtitle: 'A taste of culture, landscape, and authentic experiences.',
+  body: 'Every route we take is a story. At En-Routes, we offer curated tours across Greece — from cultural landmarks to hidden gems. Explore the Peloponnese, discover coastal villages, or enjoy themed experiences tailored to your pace. We take care of every detail so you can focus on the journey.',
+  cta: 'Learn more',
+  ctaLink: '/services',
+  image: GREECE_IMAGES.parthenon,
+};
+
 export const homeBlogConfig: HomeBlogConfig = {
-  eyebrow: { el: 'Blog Post', en: 'Blog Post' },
-  title: { el: 'Our Latest News', en: 'Our Latest News' },
-  continue: { el: 'Continue', en: 'Continue' },
+  eyebrow: 'From Greece',
+  title: 'Our Latest News and Articles',
+  subtitle: 'Discover the latest updates and insights from our team. Stay informed about travel in Greece and useful tips.',
+  continue: 'Learn more',
   items: [
-    { title: { el: "Things You Must Need To See While You're In Dubai", en: "Things You Must Need To See While You're In Dubai" }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: 'Be Careful About This, When You Are In Snow', en: 'Be Careful About This, When You Are In Snow' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: '17 places you cannot ignore in Paris', en: '17 places you cannot ignore in Paris' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
+    { title: 'Best Time to Visit the Greek Islands', category: 'Tips', date: '10 March 2026', image: GREECE_IMAGES.santorini },
+    { title: 'Athens Airport: Stress-Free Transfer Tips', category: 'Transfers', date: '10 March 2026', image: GREECE_IMAGES.acropolis },
+    { title: 'Exploring the Peloponnese by Car', category: 'Tours', date: '27 Feb 2026', image: GREECE_IMAGES.meteora },
   ],
 };
 
 export const contactFormConfig: ContactFormConfig = {
-  nameLabel: { el: 'Όνομα', en: 'Name' },
-  emailLabel: { el: 'Email', en: 'Email' },
-  messageLabel: { el: 'Μήνυμα', en: 'Message' },
-  submitButton: { el: 'Αποστολή', en: 'Send Message' },
-  submitting: { el: 'Αποστολή...', en: 'Sending...' },
-  successTitle: { el: 'Το μήνυμά σας στάλθηκε!', en: 'Message sent!' },
-  successText: { el: 'Θα επικοινωνήσουμε μαζί σας σύντομα.', en: 'We will get back to you shortly.' },
-  errorText: { el: 'Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.', en: 'Something went wrong. Please try again.' },
-  nameRequired: { el: 'Το όνομα είναι υποχρεωτικό.', en: 'Name is required.' },
-  emailInvalid: { el: 'Εισάγετε έγκυρο email.', en: 'Please enter a valid email.' },
-  messageRequired: { el: 'Το μήνυμα είναι υποχρεωτικό.', en: 'Message is required.' },
+  nameLabel: 'Name',
+  emailLabel: 'Email',
+  messageLabel: 'Message',
+  submitButton: 'Send Message',
+  submitting: 'Sending...',
+  successTitle: 'Message sent!',
+  successText: 'We will get back to you shortly.',
+  errorText: 'Something went wrong. Please try again.',
+  nameRequired: 'Name is required.',
+  emailInvalid: 'Please enter a valid email.',
+  messageRequired: 'Message is required.',
 };
 
 export const contactPageConfig: ContactPageConfig = {
-  pageTitle: { el: 'Contact Us', en: 'Contact Us' },
-  breadcrumb: { el: 'Contact', en: 'Contact' },
-  getInTouch: { el: 'Get in Touch', en: 'Get in Touch' },
-  intro: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
-  address: { el: 'Address', en: 'Address' },
-  phone: { el: 'Phone', en: 'Phone' },
-  email: { el: 'Email', en: 'Email' },
-  sendMessage: { el: 'Send a Message', en: 'Send a Message' },
-  addressValue: { el: '28 Street, New York City, USA', en: '28 Street, New York City, USA' },
-  phoneValue: '+0123-456-789',
-  emailValue: 'info@varaus.com',
+  pageTitle: 'Contact Us',
+  breadcrumb: 'Contact',
+  getInTouch: 'Get in Touch',
+  intro: 'Get in touch for transfer or tour bookings. We will get back to you as soon as we can.',
+  address: 'Address',
+  phone: 'Phone',
+  email: 'Email',
+  sendMessage: 'Send a Message',
+  addressValue: 'Greece',
+  phoneValue: '+30 694 462 9185',
+  emailValue: 'info@en-routes.gr',
 };
 
 export const aboutPageConfig: AboutPageConfig = {
-  pageTitle: { el: 'About Us', en: 'About Us' },
-  breadcrumb: { el: 'About', en: 'About' },
-  eyebrow: { el: 'About Us', en: 'About Us' },
-  title: { el: 'A Best Place to Enjoy', en: 'A Best Place to Enjoy' },
-  body1: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.' },
-  body2: { el: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.", en: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable." },
-  exploreRoomsButton: { el: 'Explore Rooms', en: 'Explore Rooms' },
+  pageTitle: 'About Us',
+  breadcrumb: 'About',
+  welcomeTitle: 'Welcome!',
+  welcomeSubtitle: 'En-Routes. A name that flows like the road. Inspired by the journey — not just a ride, but an experience, because the way matters as much as the destination.',
+  luxuryTitle: 'Luxury transfers',
+  luxuryDesc: 'Easy, stylish and worry-free. Whether you need a transfer to or from the airport or a unique tour, we are here to make your trip enjoyable and stress-free.',
+  customizedTitle: 'Customized excursions',
+  customizedDesc: 'Designed around you. With a fleet of premium vehicles, professional drivers and tailored services we create the ideal travel experience for those who seek the best.',
+  comfortTitle: 'Comfort & discretion',
+  comfortDesc: 'Travel as you deserve. We offer high-level service to travellers who look for elegance, comfort and discretion — always with care and respect.',
+  detailTitle: 'Attention to detail',
+  detailDesc: 'Because every minute counts. We take care of every detail from pickup to drop-off — with reliability, consistency and a personal touch.',
+  philosophyTitle: 'Our philosophy',
+  philosophyBody: 'The journey was always more than a simple ride. It is a search, an experience, an art — a journey through culture, art and history. Every service we offer is designed for those who do not settle for the ordinary but seek substance, elegance and authentic hospitality.',
+  valuesTitle: 'Our values',
+  valueSafety: 'Safety — The safety of our passengers and compliance with all regulations is our top priority.',
+  valueCourtesy: 'Courtesy & professionalism — Every driver and team member is trained to provide the best possible service with courtesy, respect and professionalism.',
+  valueReliability: 'Reliability — In our transfers and tours, reliability and keeping to schedule are key to a successful experience.',
+  valueSustainability: 'Sustainability — We focus on environmental responsibility and solutions that minimise our footprint.',
+  valueInnovation: 'Innovation — We always aim to evolve, integrating new technologies and services that enhance our customers\' experience.',
+  peopleTitle: 'Our people make the difference',
+  peopleBody: 'At En-Routes, our people are what make the difference. Every team member brings unique skills, experience and passion for serving our customers.',
+  exploreServicesButton: 'Our Services',
+};
+
+export const socialResponsibilityPageConfig: SocialResponsibilityPageConfig = {
+  pageTitle: 'Social Responsibility',
+  breadcrumb: 'Social Responsibility',
+  subtitle: 'Corporate Social Responsibility',
+  meaningTitle: 'A journey with meaning',
+  meaningBody: 'At En-Routes we do not just move people — we move values. For us, corporate responsibility goes deeper. It is a way of life: more conscious, fairer, closer to what truly matters.',
+  achieveTitle: 'What we want to achieve',
+  achieveBody: 'To operate with respect — for people, the environment and the communities we meet. To make “luxury” mean something deeper than comfort: responsibility, care and connection.',
+  peopleTitle: 'Commitment to people',
+  peopleBody: 'At En-Routes, people are at the centre of everything we do. We believe that luxury is not just an experience but an opportunity to connect meaningfully with people and the environment.',
+  teamTitle: 'Our team: the heart of En-Routes',
+  teamBody: 'En-Routes would not exist without its people. The wellbeing of our staff is essential to the quality of service we offer, and we foster a workplace that promotes collaboration, training and personal fulfilment.',
+  customersTitle: 'Our customers: connection and experience',
+  customersBody: 'We do not treat our customers as mere clients but as people with unique needs and wishes. We aim to make every journey special, offering experiences that are not only comfortable but human, with respect for each person.',
+  accessibilityBody: 'We also make sure everyone can join the journey. Our vehicles are accessible to people with disabilities, because luxury does not exclude — it includes.',
+  offerTitle: 'What we offer',
+  solidarityTitle: 'Solidarity and social responsibility',
+  solidarityBody: 'We believe in the power of solidarity. For us, social responsibility is not an obligation — it is part of our culture. We support local initiatives, cultural actions and vulnerable groups because we believe in it.',
+  environmentTitle: 'Commitment to the environment',
+  environmentBody: 'For us, the environment is more than a duty — it is a priority. We are committed to protecting the planet and reducing our footprint in our daily operations and services.',
+  hybridTitle: 'Hybrid fleet, lower emissions',
+  hybridBody: 'Our vehicles are hybrid, combining the power of conventional fuels with the efficiency of electric systems. This choice significantly reduces CO2 emissions and supports a cleaner environment.',
+  routesTitle: 'Route optimisation and lower footprint',
+  routesBody: 'We plan routes in the most efficient way, avoiding unnecessary distance and ensuring every trip is as efficient as possible in time and fuel.',
+  whyTitle: 'Why all this?',
+  whyBody: 'Because when you say “let’s go”, how you go matters too. We choose to go with respect — and to give meaning to every journey.',
 };
 
 export const faqConfig: FaqConfig = {
-  pageTitle: { el: 'Συχνές Ερωτήσεις', en: 'FAQ' },
-  breadcrumb: { el: 'FAQ', en: 'FAQ' },
+  pageTitle: 'FAQ',
+  breadcrumb: 'FAQ',
   items: [
-    { question: { el: 'How do I make a reservation?', en: 'How do I make a reservation?' }, answer: { el: 'You can make a reservation through our website, by phone, or by visiting our front desk. Online booking is available 24/7.', en: 'You can make a reservation through our website, by phone, or by visiting our front desk. Online booking is available 24/7.' } },
-    { question: { el: 'What is your cancellation policy?', en: 'What is your cancellation policy?' }, answer: { el: 'Cancellations made 48 hours before check-in receive a full refund. Cancellations within 48 hours may incur a one-night charge.', en: 'Cancellations made 48 hours before check-in receive a full refund. Cancellations within 48 hours may incur a one-night charge.' } },
-    { question: { el: 'What time is check-in and check-out?', en: 'What time is check-in and check-out?' }, answer: { el: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available upon request.', en: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available upon request.' } },
-    { question: { el: 'Do you offer breakfast?', en: 'Do you offer breakfast?' }, answer: { el: 'Yes, we offer a complimentary breakfast buffet from 7:00 AM to 10:00 AM daily for all registered guests.', en: 'Yes, we offer a complimentary breakfast buffet from 7:00 AM to 10:00 AM daily for all registered guests.' } },
-    { question: { el: 'Is parking available?', en: 'Is parking available?' }, answer: { el: 'Yes, we offer complimentary parking for all guests. Valet parking is also available for an additional fee.', en: 'Yes, we offer complimentary parking for all guests. Valet parking is also available for an additional fee.' } },
+    { question: 'How do I make a reservation?', answer: 'You can make a reservation through our website, by phone, or by visiting our front desk. Online booking is available 24/7.' },
+    { question: 'What is your cancellation policy?', answer: 'Cancellations made 48 hours before check-in receive a full refund. Cancellations within 48 hours may incur a one-night charge.' },
+    { question: 'What time is check-in and check-out?', answer: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available upon request.' },
+    { question: 'Do you offer breakfast?', answer: 'Yes, we offer a complimentary breakfast buffet from 7:00 AM to 10:00 AM daily for all registered guests.' },
+    { question: 'Is parking available?', answer: 'Yes, we offer complimentary parking for all guests. Valet parking is also available for an additional fee.' },
   ],
 };
 
 export const notFoundConfig: NotFoundConfig = {
-  code: { el: '404', en: '404' },
-  title: { el: 'Η σελίδα δεν βρέθηκε', en: 'Page Not Found' },
-  description: { el: 'Η σελίδα που αναζητάτε ενδέχεται να έχει αφαιρεθεί, να άλλαξε το όνομά της ή να μην είναι προσωρινά διαθέσιμη.', en: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' },
-  backButton: { el: 'Επιστροφή στην Αρχική Σελίδα', en: 'Back to Home Page' },
+  code: '404',
+  title: 'Page Not Found',
+  description: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
+  backButton: 'Back to Home Page',
 };
 
 export const roomPageConfig: RoomPageConfig = {
-  pageTitle: { el: 'Our Rooms', en: 'Our Rooms' },
-  breadcrumb: { el: 'Room', en: 'Room' },
-  categories: [
-    { el: 'Classic', en: 'Classic' },
-    { el: 'Budget', en: 'Budget' },
-    { el: 'Luxury', en: 'Luxury' },
-    { el: 'Double', en: 'Double' },
-    { el: 'Single', en: 'Single' },
-  ],
-  fromPerNight: { el: 'From: $142 / Night', en: 'From: $142 / Night' },
-  checkAvailability: { el: 'Check Availability', en: 'Check Availability' },
+  pageTitle: 'Our Rooms',
+  breadcrumb: 'Room',
+  categories: ['Classic', 'Budget', 'Luxury', 'Double', 'Single'],
+  fromPerNight: 'From: $142 / Night',
+  checkAvailability: 'Check Availability',
   items: [
-    { name: { el: 'Lake view Room', en: 'Lake view Room' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
-    { name: { el: 'Queen Room Balcony', en: 'Queen Room Balcony' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
-    { name: { el: 'Apartment', en: 'Apartment' }, type: { el: 'Twin Room', en: 'Twin Room' }, price: 142 },
+    { name: 'Lake view Room', type: 'Twin Room', price: 142 },
+    { name: 'Queen Room Balcony', type: 'Twin Room', price: 142 },
+    { name: 'Apartment', type: 'Twin Room', price: 142 },
   ],
 };
 
 export const roomSinglePageConfig: RoomSinglePageConfig = {
-  pageTitle: { el: 'Lake View Room', en: 'Lake View Room' },
-  breadcrumbRoom: { el: 'Room', en: 'Room' },
-  breadcrumbRoomSingle: { el: 'Room Single', en: 'Room Single' },
-  roomDetails: { el: 'Room Details', en: 'Room Details' },
-  body1: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.' },
-  body2: { el: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', en: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.' },
-  amenities: [
-    { el: 'WiFi', en: 'WiFi' },
-    { el: 'TV', en: 'TV' },
-    { el: 'AC', en: 'AC' },
-    { el: 'Minibar', en: 'Minibar' },
-    { el: 'Safe', en: 'Safe' },
-    { el: 'Balcony', en: 'Balcony' },
-  ],
-  bookRoom: { el: 'Book This Room', en: 'Book This Room' },
-  fromPerNight: { el: 'From $142 / Night', en: 'From $142 / Night' },
-  checkIn: { el: 'Check-in', en: 'Check-in' },
-  checkOut: { el: 'Check-out', en: 'Check-out' },
-  guests: { el: 'Guests', en: 'Guests' },
-  checkAvailability: { el: 'Check Availability', en: 'Check Availability' },
-  allServices: { el: 'All Services', en: 'All Services' },
+  pageTitle: 'Lake View Room',
+  breadcrumbRoom: 'Room',
+  breadcrumbRoomSingle: 'Room Single',
+  roomDetails: 'Room Details',
+  body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+  body2: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.',
+  amenities: ['WiFi', 'TV', 'AC', 'Minibar', 'Safe', 'Balcony'],
+  bookRoom: 'Book This Room',
+  fromPerNight: 'From $142 / Night',
+  checkIn: 'Check-in',
+  checkOut: 'Check-out',
+  guests: 'Guests',
+  checkAvailability: 'Check Availability',
+  allServices: 'All Services',
 };
 
 export const destinationPageConfig: DestinationPageConfig = {
-  pageTitle: { el: 'Destination', en: 'Destination' },
-  breadcrumb: { el: 'Destination', en: 'Destination' },
+  pageTitle: 'Destination',
+  breadcrumb: 'Destination',
   items: [
-    { name: { el: 'Paris, France', en: 'Paris, France' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$835' },
-    { name: { el: 'San Francisco', en: 'San Francisco' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$750' },
-    { name: { el: 'United Arab', en: 'United Arab' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$750' },
-    { name: { el: 'Singapore', en: 'Singapore' }, date: { el: '11 Jun 2020 - 22 Jun 2020', en: '11 Jun 2020 - 22 Jun 2020' }, price: '$550' },
+    { name: 'Paris, France', date: '11 Jun 2020 - 22 Jun 2020', price: '$835' },
+    { name: 'San Francisco', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
+    { name: 'United Arab', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
+    { name: 'Singapore', date: '11 Jun 2020 - 22 Jun 2020', price: '$550' },
   ],
 };
 
 export const servicePageConfig: ServicePageConfig = {
-  pageTitle: { el: 'Our Services', en: 'Our Services' },
-  breadcrumb: { el: 'Service', en: 'Service' },
+  pageTitle: 'Our Services',
+  breadcrumb: 'Services',
   items: [
-    { title: { el: 'Restaurant', en: 'Restaurant' }, description: { el: 'Fine dining experience with local and international cuisine.', en: 'Fine dining experience with local and international cuisine.' } },
-    { title: { el: 'Spa & Wellness', en: 'Spa & Wellness' }, description: { el: 'Relax and rejuvenate with our spa treatments.', en: 'Relax and rejuvenate with our spa treatments.' } },
-    { title: { el: 'Airport Transfer', en: 'Airport Transfer' }, description: { el: 'Complimentary airport pickup and drop-off.', en: 'Complimentary airport pickup and drop-off.' } },
-    { title: { el: '24/7 Concierge', en: '24/7 Concierge' }, description: { el: 'Our staff is always ready to assist you.', en: 'Our staff is always ready to assist you.' } },
+    { title: 'Airport Transfers', description: 'Discover the comfort and safety we offer for transfers to and from the airport. Our team is always on time and guarantees your safe and comfortable transportation, whether for arrival or departure.' },
+    { title: 'Organized Tours', description: 'Discover the best locations and sights with our organized tours. From cultural landmarks to hidden gems, our team will guide you through unforgettable experiences and unique moments of exploration.' },
+    { title: 'Corporate & Events', description: 'The ideal choice for your business needs. From corporate meetings to major events and conferences, reliable and timely transportation ensures comfort and maintains your professional profile.' },
+    { title: 'Children & Student Transport', description: 'We ensure our young passengers travel with safety, comfort, and responsibility. Our drivers are experienced and committed to a smooth ride.' },
   ],
 };
 
 export const serviceSinglePageConfig: ServiceSinglePageConfig = {
-  pageTitle: { el: 'Restaurant & Dining', en: 'Restaurant & Dining' },
-  breadcrumbService: { el: 'Service', en: 'Service' },
-  breadcrumbServiceSingle: { el: 'Service Single', en: 'Service Single' },
-  title: { el: 'Restaurant & Dining', en: 'Restaurant & Dining' },
-  body1: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.' },
-  body2: { el: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.", en: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable." },
-  allServices: { el: 'All Services', en: 'All Services' },
-  serviceItems: [
-    { el: 'Restaurant', en: 'Restaurant' },
-    { el: 'Spa & Wellness', en: 'Spa & Wellness' },
-    { el: 'Airport Transfer', en: 'Airport Transfer' },
-    { el: 'Concierge', en: 'Concierge' },
-    { el: 'Room Service', en: 'Room Service' },
-    { el: 'Pool', en: 'Pool' },
-  ],
+  pageTitle: 'Restaurant & Dining',
+  breadcrumbService: 'Service',
+  breadcrumbServiceSingle: 'Service Single',
+  title: 'Restaurant & Dining',
+  body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+  body2: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+  allServices: 'All Services',
+  serviceItems: ['Restaurant', 'Spa & Wellness', 'Airport Transfer', 'Concierge', 'Room Service', 'Pool'],
 };
 
 export const blogPageConfig: BlogPageConfig = {
-  pageTitle: { el: 'Blog', en: 'Blog' },
-  breadcrumb: { el: 'Blog', en: 'Blog' },
-  readMore: { el: 'Read More', en: 'Read More' },
+  pageTitle: 'Blog',
+  breadcrumb: 'Blog',
+  readMore: 'Read More',
   items: [
-    { title: { el: "Things You Must Need To See While You're In Dubai", en: "Things You Must Need To See While You're In Dubai" }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: 'Be Careful About This, When You Are In Snow', en: 'Be Careful About This, When You Are In Snow' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: '17 places you cannot ignore in Paris', en: '17 places you cannot ignore in Paris' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: 'Best Beaches to Visit This Summer', en: 'Best Beaches to Visit This Summer' }, category: { el: 'Travel', en: 'Travel' }, date: { el: '20 Feb 2020', en: '20 Feb 2020' } },
-    { title: { el: 'Top 10 Mountain Destinations', en: 'Top 10 Mountain Destinations' }, category: { el: 'Adventure', en: 'Adventure' }, date: { el: '15 Feb 2020', en: '15 Feb 2020' } },
-    { title: { el: 'City Guide: New York', en: 'City Guide: New York' }, category: { el: 'City', en: 'City' }, date: { el: '10 Feb 2020', en: '10 Feb 2020' } },
+    { title: 'Activities for active weekends: hiking, kayaking & cycling', category: 'Tours', date: '10 March 2026', excerpt: 'Trips do not have to be only relaxing. They can turn into active experiences that fill you with energy and create memories...', image: BLOG_CONTENT_IMAGES.hikingActivity },
+    { title: 'How to plan a budget weekend trip', category: 'Tips', date: '10 March 2026', excerpt: 'Weekends are ideal for short getaways, but often the cost makes us think twice. The truth is that with a few tips you can enjoy a great trip without breaking the bank...', image: GREECE_IMAGES.meteora },
+    { title: 'Best sunset spots in the Peloponnese', category: 'Tours', date: '10 March 2026', excerpt: 'The moment the sun sets slowly towards the horizon and the sky fills with orange, pink and golden shades is one of the best ways to end a day of exploring...', image: BLOG_CONTENT_IMAGES.sunsetPeloponnese },
+    { title: 'Guide to the best picnic spots in the Greek countryside', category: 'Tips', date: '27 Feb 2026', excerpt: 'Getting away into nature does not have to be expensive or complicated. A well-planned picnic is enough to bring you closer to the outdoors...', image: BLOG_CONTENT_IMAGES.picnicCountryside },
+    { title: 'Ideas for a relaxed trip with friends or family', category: 'Tours', date: '27 Feb 2026', excerpt: 'A trip does not need to be demanding or packed with activities to be successful. Often the best weekends are the simple ones...', image: GREECE_IMAGES.santorini },
+    { title: '10 unique hiking trails in the Peloponnese', category: 'Tours', date: '27 Feb 2026', excerpt: 'The Peloponnese is a true paradise for hiking lovers. Trails that pass through gorges, forests, rivers and traditional villages...', image: BLOG_CONTENT_IMAGES.hikingTrails },
   ],
 };
 
 export const blogLeftPageConfig: BlogLeftPageConfig = {
-  pageTitle: { el: 'Blog', en: 'Blog' },
-  breadcrumbBlog: { el: 'Blog', en: 'Blog' },
-  breadcrumbLeftSidebar: { el: 'Left Sidebar', en: 'Left Sidebar' },
-  categoriesTitle: { el: 'Categories', en: 'Categories' },
-  categories: [
-    { el: 'Travelling', en: 'Travelling' },
-    { el: 'Travel', en: 'Travel' },
-    { el: 'Adventure', en: 'Adventure' },
-    { el: 'City', en: 'City' },
-  ],
-  readMore: { el: 'Read More', en: 'Read More' },
+  pageTitle: 'Blog',
+  breadcrumbBlog: 'Blog',
+  breadcrumbLeftSidebar: 'Left Sidebar',
+  categoriesTitle: 'Categories',
+  categories: ['Travelling', 'Travel', 'Adventure', 'City'],
+  readMore: 'Read More',
   items: [
-    { title: { el: "Things You Must Need To See While You're In Dubai", en: "Things You Must Need To See While You're In Dubai" }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: 'Be Careful About This, When You Are In Snow', en: 'Be Careful About This, When You Are In Snow' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: '17 places you cannot ignore in Paris', en: '17 places you cannot ignore in Paris' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
+    { title: "Things You Must Need To See While You're In Dubai", category: 'Travelling', date: '25 Feb 2020' },
+    { title: 'Be Careful About This, When You Are In Snow', category: 'Travelling', date: '25 Feb 2020' },
+    { title: '17 places you cannot ignore in Paris', category: 'Travelling', date: '25 Feb 2020' },
   ],
 };
 
 export const blogFullwidthPageConfig: BlogFullwidthPageConfig = {
-  pageTitle: { el: 'Blog', en: 'Blog' },
-  breadcrumbBlog: { el: 'Blog', en: 'Blog' },
-  breadcrumbFullWidth: { el: 'Full Width', en: 'Full Width' },
-  readMore: { el: 'Read More', en: 'Read More' },
+  pageTitle: 'Blog',
+  breadcrumbBlog: 'Blog',
+  breadcrumbFullWidth: 'Full Width',
+  readMore: 'Read More',
   items: [
-    { title: { el: "Things You Must Need To See While You're In Dubai", en: "Things You Must Need To See While You're In Dubai" }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: 'Be Careful About This, When You Are In Snow', en: 'Be Careful About This, When You Are In Snow' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
-    { title: { el: '17 places you cannot ignore in Paris', en: '17 places you cannot ignore in Paris' }, category: { el: 'Travelling', en: 'Travelling' }, date: { el: '25 Feb 2020', en: '25 Feb 2020' } },
+    { title: "Things You Must Need To See While You're In Dubai", category: 'Travelling', date: '25 Feb 2020' },
+    { title: 'Be Careful About This, When You Are In Snow', category: 'Travelling', date: '25 Feb 2020' },
+    { title: '17 places you cannot ignore in Paris', category: 'Travelling', date: '25 Feb 2020' },
   ],
 };
 
 export const blogSinglePageConfig: BlogSinglePageConfig = {
-  breadcrumbBlog: { el: 'Blog', en: 'Blog' },
-  breadcrumbSingle: { el: 'Blog Single', en: 'Blog Single' },
-  backToBlog: { el: 'Back to Blog', en: 'Back to Blog' },
+  breadcrumbBlog: 'Blog',
+  breadcrumbSingle: 'Blog Single',
+  backToBlog: 'Back to Blog',
   item: {
-    title: { el: "Things You Must Need To See While You're In Dubai", en: "Things You Must Need To See While You're In Dubai" },
-    category: { el: 'Travelling', en: 'Travelling' },
-    date: { el: '25 Feb 2020', en: '25 Feb 2020' },
-    body1: { el: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.', en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.' },
-    body2: { el: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.", en: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text." },
-    body3: { el: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.', en: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.' },
+    title: "Things You Must Need To See While You're In Dubai",
+    category: 'Travelling',
+    date: '25 Feb 2020',
+    body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+    body2: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
+    body3: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.',
+    image: GREECE_IMAGES.parthenon,
   },
 };
 
 export const preloaderConfig: PreloaderConfig = {
-  brandName: { el: 'En-Routes', en: 'En-Routes' },
-  brandSubname: { el: 'Hotel & Resort', en: 'Hotel & Resort' },
-  yearText: { el: '2025', en: '2025' },
+  brandName: 'En-Routes',
+  brandSubname: 'Transfers & Tours',
+  yearText: '',
 };
 
 export const scrollToTopConfig: ScrollToTopConfig = {
-  ariaLabel: { el: 'Μετάβαση στην κορυφή', en: 'Scroll to top' },
+  ariaLabel: 'Scroll to top',
+};
+
+export const bookingPageConfig: BookingPageConfig = {
+  pageTitle: 'Online Bookings',
+  breadcrumb: 'Book',
+  step1: 'Travel Details',
+  step2: 'Vehicle Selection',
+  step3: 'Contact Details',
+  step4: 'Confirm Booking',
+  pickupLabel: 'Pickup Location',
+  destinationLabel: 'Destination',
+  dateLabel: 'Pickup Date',
+  timeLabel: 'Pickup Time',
+  returnTripLabel: 'Return Trip',
+  returnSectionTitle: 'Return Trip – Travel Details',
+  returnPickupLabel: 'Return Pickup Location',
+  returnDestinationLabel: 'Return Destination',
+  returnDateLabel: 'Return Date',
+  returnTimeLabel: 'Return Time',
+  pickupPlaceholder: 'Select pickup location first',
+  destinationPlaceholder: 'Select destination first',
+  adultsLabel: 'Adults',
+  childrenLabel: 'Children (under 12)',
+  passengersLabel: 'Passengers',
+  fullNameLabel: 'Full Name',
+  emailLabel: 'Email',
+  phoneLabel: 'Phone',
+  notesLabel: 'Additional Notes',
+  loadingVehicles: 'Loading available vehicles...',
+  noVehiclesFound: 'No suitable vehicles found for your requirements.',
+  priceLabel: 'Price',
+  priceOnRequest: 'On request',
+  nextStep: 'Next Step',
+  prevStep: 'Previous Step',
+  submitBooking: 'Submit Booking',
+  successTitle: 'Your booking was submitted successfully!',
+  successMessage: 'Thank you for choosing our services. We will contact you shortly to confirm.',
+  bookingNumberLabel: 'Booking number',
+  tryAgain: 'Try Again',
+  newBooking: 'New Booking',
 };

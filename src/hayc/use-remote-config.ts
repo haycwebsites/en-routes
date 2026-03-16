@@ -4,15 +4,19 @@ import {
   footerConfig,
   pageHeroConfig,
   heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
   searchConfig,
   homeAboutConfig,
   homeDestinationsConfig,
   homeRoomsConfig,
   homeTestimonialsConfig,
+  homeFeaturedConfig,
   homeBlogConfig,
   contactFormConfig,
   contactPageConfig,
   aboutPageConfig,
+  socialResponsibilityPageConfig,
   faqConfig,
   notFoundConfig,
   roomPageConfig,
@@ -26,6 +30,7 @@ import {
   blogSinglePageConfig,
   preloaderConfig,
   scrollToTopConfig,
+  bookingPageConfig,
 } from '../config';
 
 export interface RemoteConfig {
@@ -36,15 +41,19 @@ export interface RemoteConfig {
   footerConfig: typeof footerConfig;
   pageHeroConfig: typeof pageHeroConfig;
   heroConfig: typeof heroConfig;
+  homeHeroCardsConfig: typeof homeHeroCardsConfig;
+  homeServicesSectionConfig: typeof homeServicesSectionConfig;
   searchConfig: typeof searchConfig;
   homeAboutConfig: typeof homeAboutConfig;
   homeDestinationsConfig: typeof homeDestinationsConfig;
   homeRoomsConfig: typeof homeRoomsConfig;
   homeTestimonialsConfig: typeof homeTestimonialsConfig;
+  homeFeaturedConfig: typeof homeFeaturedConfig;
   homeBlogConfig: typeof homeBlogConfig;
   contactFormConfig: typeof contactFormConfig;
   contactPageConfig: typeof contactPageConfig;
   aboutPageConfig: typeof aboutPageConfig;
+  socialResponsibilityPageConfig: typeof socialResponsibilityPageConfig;
   faqConfig: typeof faqConfig;
   notFoundConfig: typeof notFoundConfig;
   roomPageConfig: typeof roomPageConfig;
@@ -58,6 +67,7 @@ export interface RemoteConfig {
   blogSinglePageConfig: typeof blogSinglePageConfig;
   preloaderConfig: typeof preloaderConfig;
   scrollToTopConfig: typeof scrollToTopConfig;
+  bookingPageConfig: typeof bookingPageConfig;
 }
 
 export const defaultConfig: RemoteConfig = {
@@ -68,15 +78,19 @@ export const defaultConfig: RemoteConfig = {
   footerConfig,
   pageHeroConfig,
   heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
   searchConfig,
   homeAboutConfig,
   homeDestinationsConfig,
   homeRoomsConfig,
   homeTestimonialsConfig,
+  homeFeaturedConfig,
   homeBlogConfig,
   contactFormConfig,
   contactPageConfig,
   aboutPageConfig,
+  socialResponsibilityPageConfig,
   faqConfig,
   notFoundConfig,
   roomPageConfig,
@@ -90,6 +104,7 @@ export const defaultConfig: RemoteConfig = {
   blogSinglePageConfig,
   preloaderConfig,
   scrollToTopConfig,
+  bookingPageConfig,
 };
 
 export async function fetchRemoteConfig(): Promise<RemoteConfig> {
