@@ -13,7 +13,8 @@ export function HomePage() {
   const servicesSection = config.homeServicesSectionConfig;
   const services = config.servicePageConfig;
   const featured = config.homeFeaturedConfig;
-  const blog = config.homeBlogConfig;
+  const homeBlog = config.homeBlogConfig;
+  const blogPage = config.blogPageConfig;
 
   return (
     <>
@@ -140,40 +141,63 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Our latest news and articles – Vayo-style */}
+      {/* Our latest news and articles – Vayo-style (first three from Blog) */}
       <section className="section-padding bg-gray-900/40 border-t border-white/5">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-[var(--gold-400)] text-sm tracking-wider uppercase" {...cp('homeBlogConfig.eyebrow')}>{t(blog.eyebrow)}</span>
-            <h2 className="font-serif text-3xl md:text-4xl text-white mt-2 mb-4" {...cp('homeBlogConfig.title')}>{t(blog.title)}</h2>
-            <p className="text-white/70 max-w-2xl mx-auto" {...cp('homeBlogConfig.subtitle')}>{t(blog.subtitle)}</p>
+            <span className="text-[var(--gold-400)] text-sm tracking-wider uppercase" {...cp('homeBlogConfig.eyebrow')}>{t(homeBlog.eyebrow)}</span>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mt-2 mb-4" {...cp('homeBlogConfig.title')}>{t(homeBlog.title)}</h2>
+            <p className="text-white/70 max-w-2xl mx-auto" {...cp('homeBlogConfig.subtitle')}>{t(homeBlog.subtitle)}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {blog.items.slice(0, 3).map((post, i) => (
-              <Link
-                key={i}
-                to="/blog/single"
-                className="group block rounded-xl overflow-hidden bg-gray-900 border border-white/5 hover:border-[var(--gold-500)]/30 transition-all"
-              >
-                <img
-                  src={img(post.image ?? 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80')}
-                  alt=""
-                  className="aspect-video w-full object-cover object-center bg-gray-700"
-                />
-                <div className="p-6">
-                  <div className="flex gap-4 text-sm text-white/60 mb-2">
-                    <span {...cp(`homeBlogConfig.items.${i}.category`)}>{t(post.category)}</span>
-                    <span {...cp(`homeBlogConfig.items.${i}.date`)}>{t(post.date)}</span>
+            {blogPage.items.slice(0, 3).map((post, i) => {
+              const to =
+                i === 0
+                  ? '/blog/single'
+                  : i === 1
+                  ? '/blog/budget-weekend'
+                  : i === 2
+                  ? '/blog/best-sunset-peloponnese'
+                  : '/blog';
+              return (
+                <Link
+                  key={i}
+                  to={to}
+                  className="group block rounded-xl overflow-hidden bg-gray-900 border border-white/5 hover:border-[var(--gold-500)]/30 transition-all"
+                >
+                  <img
+                    src={img(
+                      post.image ??
+                        'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80'
+                    )}
+                    alt=""
+                    className="aspect-video w-full object-cover object-center bg-gray-700"
+                  />
+                  <div className="p-6">
+                    <div className="flex gap-4 text-sm text-white/60 mb-2">
+                      <span {...cp(`blogPageConfig.items.${i}.category`)}>{t(post.category)}</span>
+                      <span {...cp(`blogPageConfig.items.${i}.date`)}>{t(post.date)}</span>
+                    </div>
+                    <h3
+                      className="font-serif text-lg text-white group-hover:text-[var(--gold-400)] transition-colors line-clamp-2"
+                      {...cp(`blogPageConfig.items.${i}.title`)}
+                    >
+                      {t(post.title)}
+                    </h3>
+                    <span
+                      className="inline-block mt-3 text-sm text-[var(--gold-400)]"
+                      {...cp('homeBlogConfig.continue')}
+                    >
+                      {t(homeBlog.continue)} →
+                    </span>
                   </div>
-                  <h3 className="font-serif text-lg text-white group-hover:text-[var(--gold-400)] transition-colors line-clamp-2" {...cp(`homeBlogConfig.items.${i}.title`)}>{t(post.title)}</h3>
-                  <span className="inline-block mt-3 text-sm text-[var(--gold-400)]" {...cp('homeBlogConfig.continue')}>{t(blog.continue)} →</span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
           <div className="text-center mt-10">
             <Button asChild variant="outline" className="btn-dark">
-              <Link to="/blog" {...cp('homeBlogConfig.continue')}>{t(blog.continue)}</Link>
+              <Link to="/blog" {...cp('homeBlogConfig.continue')}>{t(homeBlog.continue)}</Link>
             </Button>
           </div>
         </div>

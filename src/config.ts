@@ -827,13 +827,16 @@ export const blogSinglePageConfig: BlogSinglePageConfig = {
   breadcrumbSingle: 'Blog Single',
   backToBlog: 'Back to Blog',
   item: {
-    title: "Things You Must Need To See While You're In Dubai",
-    category: 'Travelling',
-    date: '25 Feb 2020',
-    body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
-    body2: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-    body3: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.',
-    image: GREECE_IMAGES.parthenon,
+    title: 'Activities for Active Weekends: Hiking, Kayaking & Cycling',
+    category: 'Tours',
+    date: '10 March 2026',
+    body1:
+      "Weekend getaways don't have to be only about relaxation. They can easily turn into active experiences that boost your energy and create unforgettable memories. A weekend is the perfect opportunity to try activities like hiking, kayaking, and cycling—especially in places where nature offers stunning landscapes and endless routes to explore.",
+    body2:
+      'Hiking is one of the best ways to combine exercise with a deep connection to nature. From easy walking paths to more challenging trails, it allows you to discover canyons, green hills, forests, and hidden waterfalls. Cycling is ideal for those who want to cover longer distances and explore more in less time, while kayaking offers a completely different perspective from the water—exploring coastlines, lakes, and rivers in a unique and exciting way.',
+    body3:
+      'Of course, preparation makes all the difference: comfortable clothing, proper footwear, enough water, and routes that match your experience level are essential for a safe and enjoyable trip. An active weekend is more than just exercise—it is a chance to unwind creatively, connect with friends or family, and recharge both physically and mentally. Every step, pedal, or paddle becomes part of an experience that leaves you feeling refreshed and ready for the week ahead. 🚴‍♂️🥾🚣‍♀️',
+    image: BLOG_CONTENT_IMAGES.hikingActivity,
   },
 };
 

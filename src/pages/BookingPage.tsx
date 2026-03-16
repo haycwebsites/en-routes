@@ -13,6 +13,9 @@ import {
 } from '@/components/ui/select';
 import { useHayc } from '@/hayc/config-context';
 import { innerPageHeroImages } from '@/config';
+import sedanImg from '@/assets/vehicles/sedan.png';
+import minivanImg from '@/assets/vehicles/minivan.png';
+import minibusImg from '@/assets/vehicles/minibus.png';
 import { ChevronRight, ChevronLeft, Minus, Plus } from 'lucide-react';
 
 // Same locations as Vayo: Athens Airport, Kalamata Airport, Athens, Corinth, ports, Tripoli, Custom
@@ -29,9 +32,27 @@ const PICKUP_OPTIONS = [
 ];
 
 const VEHICLES = [
-  { id: 'sedan', name: 'Sedan (up to 3 passengers)', price: '—' },
-  { id: 'van', name: 'Minivan (up to 7 passengers)', price: '—' },
-  { id: 'minibus', name: 'Minibus (up to 15 passengers)', price: '—' },
+  {
+    id: 'sedan',
+    name: 'Sedan (4-seater)',
+    type: 'Passenger car',
+    capacity: 'Up to 4 passengers',
+    image: sedanImg,
+  },
+  {
+    id: 'van',
+    name: 'Minivan (7-seater)',
+    type: 'Minivan',
+    capacity: 'Up to 7 passengers',
+    image: minivanImg,
+  },
+  {
+    id: 'minibus',
+    name: 'Minibus (9-seater)',
+    type: 'Minibus',
+    capacity: 'Up to 9 passengers',
+    image: minibusImg,
+  },
 ];
 
 export function BookingPage() {
@@ -133,20 +154,21 @@ export function BookingPage() {
     <>
       <PageHero title={t(bc.pageTitle)} titleConfigPath="bookingPageConfig.pageTitle" breadcrumbs={[{ label: t(bc.breadcrumb), configPath: 'bookingPageConfig.breadcrumb' }]} backgroundImage={innerPageHeroImages.booking} />
       <section className="section-padding">
-        <div className="container-custom max-w-2xl">
-          {/* Step indicator – Vayo style: 1 Travel Details • 2 Vehicle Selection • … */}
-          <div className="flex flex-wrap items-center gap-2 mb-10 text-sm">
-            {steps.map((s, i) => (
-              <span key={s.num} className="flex items-center gap-2">
-                <span className={s.num === step ? 'text-[var(--gold-400)] font-medium' : 'text-white/50'}>
-                  {s.num} {s.label}
+        <div className="container-custom max-w-3xl">
+          <div className="rounded-xl border border-white/10 bg-gray-900/80 shadow-lg px-5 py-6 md:px-8 md:py-8">
+            {/* Step indicator – Vayo style: 1 Travel Details • 2 Vehicle Selection • … */}
+            <div className="flex flex-wrap items-center gap-2 mb-8 text-sm">
+              {steps.map((s, i) => (
+                <span key={s.num} className="flex items-center gap-2">
+                  <span className={s.num === step ? 'text-[var(--gold-400)] font-medium' : 'text-white/50'}>
+                    {s.num} {s.label}
+                  </span>
+                  {i < steps.length - 1 && <ChevronRight className="size-4 text-white/30" />}
                 </span>
-                {i < steps.length - 1 && <ChevronRight className="size-4 text-white/30" />}
-              </span>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
             {step === 1 && (
               <div className="space-y-4">
                 <div>
@@ -294,20 +316,68 @@ export function BookingPage() {
             )}
 
             {step === 2 && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {loadingVehicles ? (
-                  <p className="text-white/70" {...cp('bookingPageConfig.loadingVehicles')}>{t(bc.loadingVehicles)}</p>
+                  <p className="text-white/70" {...cp('bookingPageConfig.loadingVehicles')}>
+                    {t(bc.loadingVehicles)}
+                  </p>
                 ) : VEHICLES.length === 0 ? (
-                  <p className="text-white/70" {...cp('bookingPageConfig.noVehiclesFound')}>{t(bc.noVehiclesFound)}</p>
+                  <p className="text-white/70" {...cp('bookingPageConfig.noVehiclesFound')}>
+                    {t(bc.noVehiclesFound)}
+                  </p>
                 ) : (
-                  <div className="space-y-3">
-                    {VEHICLES.map((v) => (
-                      <label key={v.id} className="flex items-center gap-4 p-4 rounded-lg border border-white/10 bg-gray-900/50 hover:border-[var(--gold-500)]/30 cursor-pointer">
-                        <input type="radio" name="vehicle" value={v.id} checked={formData.vehicleId === v.id} onChange={() => setFormData((f) => ({ ...f, vehicleId: v.id }))} className="text-[var(--gold-500)]" required />
-                        <span className="text-white flex-1">{v.name}</span>
-                        <span className="text-[var(--gold-400)]">{v.price}</span>
-                      </label>
-                    ))}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {VEHICLES.map((v) => {
+                      const selected = formData.vehicleId === v.id;
+                      return (
+                        <button
+                          key={v.id}
+                          type="button"
+                          onClick={() =>
+                            setFormData((f) => ({
+                              ...f,
+                              vehicleId: v.id,
+                            }))
+                          }
+                          className={
+                            'text-left rounded-xl border bg-gray-900/70 hover:bg-gray-900 transition-all flex flex-col sm:flex-row gap-4 overflow-hidden' +
+                            (selected
+                              ? ' border-[var(--gold-500)] shadow-[0_0_0_1px_rgba(212,164,86,0.6)]'
+                              : ' border-white/10 hover:border-[var(--gold-500)]/40')
+                          }
+                        >
+                          <div className="sm:w-40 bg-gray-800 flex items-center justify-center">
+                            <img
+                              src={v.image}
+                              alt={v.name}
+                              className="h-24 w-full object-contain object-center"
+                            />
+                          </div>
+                          <div className="flex-1 p-4 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <h3 className="font-serif text-lg text-white">{v.name}</h3>
+                              <p className="text-sm text-white/60">{v.type}</p>
+                              <p className="text-sm text-white/70">{v.capacity}</p>
+                            </div>
+                            <div className="mt-4 flex items-center justify-between">
+                              <span className="text-xs uppercase tracking-wide text-white/50">
+                                {selected ? 'Selected vehicle' : 'Tap to select'}
+                              </span>
+                              <span
+                                className={
+                                  'inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ' +
+                                  (selected
+                                    ? 'bg-[var(--gold-500)] text-black'
+                                    : 'bg-white/5 text-white/80')
+                                }
+                              >
+                                {selected ? 'Selected' : 'Select'}
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -358,7 +428,8 @@ export function BookingPage() {
                 {step < 4 ? <>{t(bc.nextStep)} <ChevronRight className="size-4 ml-1" /></> : t(bc.submitBooking)}
               </Button>
             </div>
-          </form>
+            </form>
+          </div>
         </div>
       </section>
     </>
