@@ -5,6 +5,17 @@ import { Plane, Users, Briefcase, GraduationCap } from 'lucide-react';
 
 const serviceIcons = [Plane, Briefcase, Users, GraduationCap];
 
+/** Vayo-style van showcase (same layout as vayo.gr), on dark site background */
+const VAN_HERO_IMAGE = 'https://vayo.gr/wp-content/uploads/2025/07/vayo-van.png';
+const VAN_GALLERY_IMAGES = {
+  col1a: 'https://vayo.gr/wp-content/uploads/2025/06/vayo-3.jpg',
+  col1b: 'https://vayo.gr/wp-content/uploads/2025/06/vayo-5.webp',
+  col2a: 'https://vayo.gr/wp-content/uploads/2025/07/hyundai-staria-2_l.webp',
+  col2b: 'https://vayo.gr/wp-content/uploads/2025/07/hyundai-staria-dashboard-view-850326.avif',
+  col3a: 'https://vayo.gr/wp-content/uploads/2025/06/vayo-7.jpg',
+  col3b: 'https://vayo.gr/wp-content/uploads/2025/07/Hyundai-Staria.webp',
+} as const;
+
 export function HomePage() {
   const { t, img, config, cp } = useHayc();
   const hero = config.heroConfig;
@@ -119,6 +130,53 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Full-width van hero – same asset as Vayo home; blends with page bg */}
+      <section className="bg-[var(--page-bg)] py-8 md:py-10">
+        <div className="container-custom max-w-5xl mx-auto">
+          <div className="overflow-hidden">
+            <img
+              src={VAN_HERO_IMAGE}
+              alt=""
+              className="w-full h-auto block object-cover"
+              width={1280}
+              height={720}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Three-column van gallery – Vayo layout, dark theme */}
+      <section className="section-padding bg-[#141414] pt-0">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-0">
+            <div className="flex flex-col">
+              <div className="image-wrapper-vayo w-full max-w-none">
+                <img src={VAN_GALLERY_IMAGES.col1a} alt="" loading="lazy" />
+              </div>
+              <div className="image-wrapper-vayo w-full max-w-none">
+                <img src={VAN_GALLERY_IMAGES.col1b} alt="" loading="lazy" />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <div className="image-wrapper-vayo w-full max-w-none image-wrapper-vayo--offset-top">
+                <img src={VAN_GALLERY_IMAGES.col2a} alt="" loading="lazy" />
+              </div>
+              <div className="image-wrapper-vayo w-full max-w-none">
+                <img src={VAN_GALLERY_IMAGES.col2b} alt="" loading="lazy" />
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row xl:flex-col gap-4">
+              <div className="image-wrapper-vayo w-full max-w-none flex-1 mb-0">
+                <img src={VAN_GALLERY_IMAGES.col3a} alt="" loading="lazy" />
+              </div>
+              <div className="image-wrapper-vayo w-full max-w-none flex-1">
+                <img src={VAN_GALLERY_IMAGES.col3b} alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured block – Vayo Wine Tours style (Tours in Greece) */}
       <section className="section-padding bg-gray-900/40 border-y border-white/5">
         <div className="container-custom">
@@ -126,7 +184,7 @@ export function HomePage() {
             <img
               src={img(featured.image)}
               alt=""
-              className="relative aspect-[4/3] w-full rounded-xl object-cover object-center border border-white/10 bg-gray-800"
+              className="relative aspect-[4/3] w-full object-cover object-center border border-white/10 bg-gray-800"
             />
             <div>
               <span className="text-[var(--gold-400)] text-sm tracking-wider uppercase" {...cp('homeFeaturedConfig.eyebrow')}>{t(featured.eyebrow)}</span>
