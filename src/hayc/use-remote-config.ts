@@ -33,6 +33,7 @@ import {
   bookingPageConfig,
   digitalProductsConfig,
   type DigitalProductsConfig,
+  innerPageHeroImages
 } from '../config';
 
 export interface RemoteConfig {
@@ -71,6 +72,7 @@ export interface RemoteConfig {
   scrollToTopConfig: typeof scrollToTopConfig;
   bookingPageConfig: typeof bookingPageConfig;
   digitalProductsConfig?: DigitalProductsConfig;
+  innerPageHeroImages: typeof innerPageHeroImages;
 }
 
 export const defaultConfig: RemoteConfig = {
@@ -109,6 +111,7 @@ export const defaultConfig: RemoteConfig = {
   scrollToTopConfig,
   bookingPageConfig,
   digitalProductsConfig,
+  innerPageHeroImages,
 };
 
 export async function fetchRemoteConfig(): Promise<RemoteConfig> {
