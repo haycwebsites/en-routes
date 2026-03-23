@@ -35,6 +35,7 @@ import {
   scrollToTopConfig,
   bookingPageConfig,
   digitalProductsConfig,
+  innerPageHeroImages
 } from '../src/config.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -76,6 +77,7 @@ const config = {
   scrollToTopConfig,
   bookingPageConfig,
   digitalProductsConfig,
+  innerPageHeroImages
 };
 
 const projectRoot = path.resolve(__dirname, '../../');
