@@ -1,7 +1,41 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { siteConfig, digitalProductsConfig } from '../src/config.js';
+import {
+  siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeFeaturedConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  socialResponsibilityPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
+  bookingPageConfig,
+  digitalProductsConfig,
+} from '../src/config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +44,37 @@ const config = {
   version: 1,
   exportedAt: new Date().toISOString(),
   siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeFeaturedConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  socialResponsibilityPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
+  bookingPageConfig,
   digitalProductsConfig,
 };
 
@@ -21,7 +86,6 @@ fs.writeFileSync(
   JSON.stringify(config, null, 2),
   'utf-8'
 );
-
 console.log('config.json exported to dist/hayc/config.json');
 
 const publicDir = path.join(projectRoot, 'public/hayc');
