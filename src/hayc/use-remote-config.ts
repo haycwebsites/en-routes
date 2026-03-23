@@ -1,9 +1,75 @@
-import { siteConfig, digitalProductsConfig, type DigitalProductsConfig } from '../config';
+import {
+  siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeFeaturedConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  socialResponsibilityPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
+  bookingPageConfig,
+  digitalProductsConfig,
+  type DigitalProductsConfig,
+} from '../config';
 
 export interface RemoteConfig {
   version: number;
   exportedAt: string;
   siteConfig: typeof siteConfig;
+  navigationConfig: typeof navigationConfig;
+  footerConfig: typeof footerConfig;
+  pageHeroConfig: typeof pageHeroConfig;
+  heroConfig: typeof heroConfig;
+  homeHeroCardsConfig: typeof homeHeroCardsConfig;
+  homeServicesSectionConfig: typeof homeServicesSectionConfig;
+  searchConfig: typeof searchConfig;
+  homeAboutConfig: typeof homeAboutConfig;
+  homeDestinationsConfig: typeof homeDestinationsConfig;
+  homeRoomsConfig: typeof homeRoomsConfig;
+  homeTestimonialsConfig: typeof homeTestimonialsConfig;
+  homeFeaturedConfig: typeof homeFeaturedConfig;
+  homeBlogConfig: typeof homeBlogConfig;
+  contactFormConfig: typeof contactFormConfig;
+  contactPageConfig: typeof contactPageConfig;
+  aboutPageConfig: typeof aboutPageConfig;
+  socialResponsibilityPageConfig: typeof socialResponsibilityPageConfig;
+  faqConfig: typeof faqConfig;
+  notFoundConfig: typeof notFoundConfig;
+  roomPageConfig: typeof roomPageConfig;
+  roomSinglePageConfig: typeof roomSinglePageConfig;
+  destinationPageConfig: typeof destinationPageConfig;
+  servicePageConfig: typeof servicePageConfig;
+  serviceSinglePageConfig: typeof serviceSinglePageConfig;
+  blogPageConfig: typeof blogPageConfig;
+  blogLeftPageConfig: typeof blogLeftPageConfig;
+  blogFullwidthPageConfig: typeof blogFullwidthPageConfig;
+  blogSinglePageConfig: typeof blogSinglePageConfig;
+  preloaderConfig: typeof preloaderConfig;
+  scrollToTopConfig: typeof scrollToTopConfig;
+  bookingPageConfig: typeof bookingPageConfig;
   digitalProductsConfig?: DigitalProductsConfig;
 }
 
@@ -11,16 +77,44 @@ export const defaultConfig: RemoteConfig = {
   version: 1,
   exportedAt: '',
   siteConfig,
+  navigationConfig,
+  footerConfig,
+  pageHeroConfig,
+  heroConfig,
+  homeHeroCardsConfig,
+  homeServicesSectionConfig,
+  searchConfig,
+  homeAboutConfig,
+  homeDestinationsConfig,
+  homeRoomsConfig,
+  homeTestimonialsConfig,
+  homeFeaturedConfig,
+  homeBlogConfig,
+  contactFormConfig,
+  contactPageConfig,
+  aboutPageConfig,
+  socialResponsibilityPageConfig,
+  faqConfig,
+  notFoundConfig,
+  roomPageConfig,
+  roomSinglePageConfig,
+  destinationPageConfig,
+  servicePageConfig,
+  serviceSinglePageConfig,
+  blogPageConfig,
+  blogLeftPageConfig,
+  blogFullwidthPageConfig,
+  blogSinglePageConfig,
+  preloaderConfig,
+  scrollToTopConfig,
+  bookingPageConfig,
   digitalProductsConfig,
 };
 
 export async function fetchRemoteConfig(): Promise<RemoteConfig> {
-  // In development, use config.ts directly for instant updates
   if (import.meta.env.DEV) {
     return defaultConfig;
   }
-
-  // In production, fetch from remote config.json
   try {
     const res = await fetch('/hayc/config.json');
     if (!res.ok) throw new Error('Failed to fetch config: ' + res.status);
