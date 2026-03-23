@@ -395,6 +395,29 @@ export interface BookingPageConfig {
   newBooking: LocaleString;
 }
 
+export interface DigitalProduct {
+  id: string;
+  type: 'course';
+  title: string;
+  slug: string;
+  description?: string;
+  thumbnail?: string;
+  price: string;
+  language: string;
+  estimatedDurationMinutes?: number;
+  chapters?: {
+    id: string;
+    title: string;
+    lessons: { id: string; title: string }[];
+  }[];
+}
+
+export interface DigitalProductsConfig {
+  enabled: boolean;
+  lastSyncedAt?: string;
+  products: DigitalProduct[];
+}
+
 // =============================================================================
 // CONSTANTS
 // =============================================================================
@@ -888,4 +911,9 @@ export const bookingPageConfig: BookingPageConfig = {
   bookingNumberLabel: 'Booking number',
   tryAgain: 'Try Again',
   newBooking: 'New Booking',
+};
+
+export const digitalProductsConfig: DigitalProductsConfig = {
+  enabled: false,
+  products: [],
 };
