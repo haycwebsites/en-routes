@@ -497,62 +497,28 @@ export const pageHeroConfig: PageHeroConfig = {
   homeBreadcrumb: 'Home',
 };
 
-// Greece-only images: verified Unsplash IDs (Santorini, Meteora, Acropolis/Parthenon Athens)
-const GREECE_IMAGES = {
-  santorini: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80',
-  meteora: 'https://images.unsplash.com/photo-1660386064971-d5870803764a?w=1920&q=80',
-  acropolis: 'https://images.unsplash.com/photo-1741791415725-2010d94f5987?w=1920&q=80',
-  parthenon: 'https://images.unsplash.com/photo-1767907573610-6f1d6c501d6f?w=1920&q=80',
-} as const;
-
-/** Hero background images for inner pages — distinct from home/cards; Vayo-style (roads, coasts, landscapes) */
-const INNER_PAGE_HERO_IMAGES = {
-  /** Road through valley — transfer/journey (Meteora area) */
-  services: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
-  /** Greek coastal town — Paros */
-  blog: 'https://images.unsplash.com/photo-1753441034632-50d3137f0799?w=1920&q=80',
-  /** Mountain with village — welcoming destination */
-  contact: 'https://images.unsplash.com/photo-1688680292966-a8ba3a39d0ab?w=1920&q=80',
-  /** Green hills and mountains — Greece landscape */
-  about: 'https://images.unsplash.com/photo-1596199567658-0b13465b0a80?w=1920&q=80',
-  /** Mountain and lake — nature/sustainability */
-  socialResponsibility: 'https://images.unsplash.com/photo-1704472546450-2fd83176d216?w=1920&q=80',
-  /** Book page — journey/transfer (same road vibe as services) */
-  booking: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
-} as const;
-
-export const innerPageHeroImages = INNER_PAGE_HERO_IMAGES;
-
-// Blog post images matched to content (verified Unsplash IDs)
-const BLOG_CONTENT_IMAGES = {
-  hikingActivity: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80',
-  sunsetPeloponnese: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
-  picnicCountryside: 'https://images.unsplash.com/photo-1596050501744-c1721ab5ee11?w=800&q=80',
-  hikingTrails: 'https://images.unsplash.com/photo-1643386165206-d1be6dcc76c2?w=800&q=80',
-} as const;
-
 export const heroConfig: HeroConfig = {
   mainTitle: 'Welcome to En-Routes',
   subtitle: 'Transfers and tours with comfort, reliability, and personal service.',
   cta: 'Transfers & Tours',
-  heroImage: GREECE_IMAGES.acropolis,
+  heroImage: 'https://images.unsplash.com/photo-1741791415725-2010d94f5987?w=1920&q=80',
 };
 
-export const homeHeroCardsConfig: HomeHeroCardConfig[] = [
+export const homeHeroCardsConfig = [
   {
-    image: GREECE_IMAGES.meteora,
+    image: 'https://images.unsplash.com/photo-1660386064971-d5870803764a?w=1920&q=80',
     title: 'Transfers',
     tagline: 'Make your journey better and brighter. We are here to take you there.',
     learnMore: 'Learn more',
   },
   {
-    image: GREECE_IMAGES.santorini,
+    image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80',
     title: 'Organized Tours',
     tagline: 'Make your journey better and brighter. We are here to take you there.',
     learnMore: 'Learn more',
   },
   {
-    image: GREECE_IMAGES.acropolis,
+    image: 'https://images.unsplash.com/photo-1741791415725-2010d94f5987?w=1920&q=80',
     title: 'Your journey, our care',
     tagline: 'Make your journey better and brighter. We are here to take you there.',
     learnMore: 'Learn more',
@@ -588,24 +554,58 @@ export const homeDestinationsConfig: HomeDestinationsConfig = {
   discoverButton: 'Discover More',
   perDay: 'Per Day',
   items: [
-    { name: 'Paris, France', date: '11 Jun 2020 - 22 Jun 2020', price: '$835' },
-    { name: 'San Francisco', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
-    { name: 'United Arab', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
-    { name: 'Singapore', date: '11 Jun 2020 - 22 Jun 2020', price: '$550' },
+    {
+      name: 'Paris, France',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$835',
+    },
+    {
+      name: 'San Francisco',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$750',
+    },
+    {
+      name: 'United Arab',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$750',
+    },
+    {
+      name: 'Singapore',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$550',
+    },
   ],
 };
 
 export const homeRoomsConfig: HomeRoomsConfig = {
   eyebrow: 'Our Rooms',
   title: 'Discover Our Rooms',
-  categories: ['Classic', 'Budget', 'Luxury', 'Double', 'Single'],
+  categories: [
+    'Classic',
+    'Budget',
+    'Luxury',
+    'Double',
+    'Single',
+  ],
   roomDescription: 'If you are going to use a passage Lorem Ipsum...',
   fromPerNight: 'From: $142 / Night',
   checkAvailability: 'Check Availability',
   items: [
-    { name: 'Lake view Room', type: 'Twin Room', price: 142 },
-    { name: 'Queen Room Balcony', type: 'Twin Room', price: 142 },
-    { name: 'Apartment', type: 'Twin Room', price: 142 },
+    {
+      name: 'Lake view Room',
+      type: 'Twin Room',
+      price: 142,
+    },
+    {
+      name: 'Queen Room Balcony',
+      type: 'Twin Room',
+      price: 142,
+    },
+    {
+      name: 'Apartment',
+      type: 'Twin Room',
+      price: 142,
+    },
   ],
 };
 
@@ -613,9 +613,21 @@ export const homeTestimonialsConfig: HomeTestimonialsConfig = {
   eyebrow: 'What Say Clients',
   title: 'Our Clients are Important to Us',
   items: [
-    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Benjir Walton', location: 'Singapore' },
-    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Jenefar Meera', location: 'Canada' },
-    { quote: "The trip was incredible. I got to see so many places I wouldn't have by myself, me and my husband really enjoyed a lot.", name: 'Lily monalisa', location: 'Singapore' },
+    {
+      quote: 'The trip was incredible. I got to see so many places I wouldn\'t have by myself, me and my husband really enjoyed a lot.',
+      name: 'Benjir Walton',
+      location: 'Singapore',
+    },
+    {
+      quote: 'The trip was incredible. I got to see so many places I wouldn\'t have by myself, me and my husband really enjoyed a lot.',
+      name: 'Jenefar Meera',
+      location: 'Canada',
+    },
+    {
+      quote: 'The trip was incredible. I got to see so many places I wouldn\'t have by myself, me and my husband really enjoyed a lot.',
+      name: 'Lily monalisa',
+      location: 'Singapore',
+    },
   ],
 };
 
@@ -626,7 +638,7 @@ export const homeFeaturedConfig: HomeFeaturedConfig = {
   body: 'Every route we take is a story. At En-Routes, we offer curated tours across Greece — from cultural landmarks to hidden gems. Explore the Peloponnese, discover coastal villages, or enjoy themed experiences tailored to your pace. We take care of every detail so you can focus on the journey.',
   cta: 'Learn more',
   ctaLink: '/services',
-  image: GREECE_IMAGES.parthenon,
+  image: 'https://images.unsplash.com/photo-1767907573610-6f1d6c501d6f?w=1920&q=80',
 };
 
 export const homeBlogConfig: HomeBlogConfig = {
@@ -635,9 +647,24 @@ export const homeBlogConfig: HomeBlogConfig = {
   subtitle: 'Discover the latest updates and insights from our team. Stay informed about travel in Greece and useful tips.',
   continue: 'Learn more',
   items: [
-    { title: 'Best Time to Visit the Greek Islands', category: 'Tips', date: '10 March 2026', image: GREECE_IMAGES.santorini },
-    { title: 'Athens Airport: Stress-Free Transfer Tips', category: 'Transfers', date: '10 March 2026', image: GREECE_IMAGES.acropolis },
-    { title: 'Exploring the Peloponnese by Car', category: 'Tours', date: '27 Feb 2026', image: GREECE_IMAGES.meteora },
+    {
+      title: 'Best Time to Visit the Greek Islands',
+      category: 'Tips',
+      date: '10 March 2026',
+      image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80',
+    },
+    {
+      title: 'Athens Airport: Stress-Free Transfer Tips',
+      category: 'Transfers',
+      date: '10 March 2026',
+      image: 'https://images.unsplash.com/photo-1741791415725-2010d94f5987?w=1920&q=80',
+    },
+    {
+      title: 'Exploring the Peloponnese by Car',
+      category: 'Tours',
+      date: '27 Feb 2026',
+      image: 'https://images.unsplash.com/photo-1660386064971-d5870803764a?w=1920&q=80',
+    },
   ],
 };
 
@@ -727,11 +754,26 @@ export const faqConfig: FaqConfig = {
   pageTitle: 'FAQ',
   breadcrumb: 'FAQ',
   items: [
-    { question: 'How do I make a reservation?', answer: 'You can make a reservation through our website, by phone, or by visiting our front desk. Online booking is available 24/7.' },
-    { question: 'What is your cancellation policy?', answer: 'Cancellations made 48 hours before check-in receive a full refund. Cancellations within 48 hours may incur a one-night charge.' },
-    { question: 'What time is check-in and check-out?', answer: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available upon request.' },
-    { question: 'Do you offer breakfast?', answer: 'Yes, we offer a complimentary breakfast buffet from 7:00 AM to 10:00 AM daily for all registered guests.' },
-    { question: 'Is parking available?', answer: 'Yes, we offer complimentary parking for all guests. Valet parking is also available for an additional fee.' },
+    {
+      question: 'How do I make a reservation?',
+      answer: 'You can make a reservation through our website, by phone, or by visiting our front desk. Online booking is available 24/7.',
+    },
+    {
+      question: 'What is your cancellation policy?',
+      answer: 'Cancellations made 48 hours before check-in receive a full refund. Cancellations within 48 hours may incur a one-night charge.',
+    },
+    {
+      question: 'What time is check-in and check-out?',
+      answer: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available upon request.',
+    },
+    {
+      question: 'Do you offer breakfast?',
+      answer: 'Yes, we offer a complimentary breakfast buffet from 7:00 AM to 10:00 AM daily for all registered guests.',
+    },
+    {
+      question: 'Is parking available?',
+      answer: 'Yes, we offer complimentary parking for all guests. Valet parking is also available for an additional fee.',
+    },
   ],
 };
 
@@ -745,13 +787,31 @@ export const notFoundConfig: NotFoundConfig = {
 export const roomPageConfig: RoomPageConfig = {
   pageTitle: 'Our Rooms',
   breadcrumb: 'Room',
-  categories: ['Classic', 'Budget', 'Luxury', 'Double', 'Single'],
+  categories: [
+    'Classic',
+    'Budget',
+    'Luxury',
+    'Double',
+    'Single',
+  ],
   fromPerNight: 'From: $142 / Night',
   checkAvailability: 'Check Availability',
   items: [
-    { name: 'Lake view Room', type: 'Twin Room', price: 142 },
-    { name: 'Queen Room Balcony', type: 'Twin Room', price: 142 },
-    { name: 'Apartment', type: 'Twin Room', price: 142 },
+    {
+      name: 'Lake view Room',
+      type: 'Twin Room',
+      price: 142,
+    },
+    {
+      name: 'Queen Room Balcony',
+      type: 'Twin Room',
+      price: 142,
+    },
+    {
+      name: 'Apartment',
+      type: 'Twin Room',
+      price: 142,
+    },
   ],
 };
 
@@ -762,7 +822,14 @@ export const roomSinglePageConfig: RoomSinglePageConfig = {
   roomDetails: 'Room Details',
   body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
   body2: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.',
-  amenities: ['WiFi', 'TV', 'AC', 'Minibar', 'Safe', 'Balcony'],
+  amenities: [
+    'WiFi',
+    'TV',
+    'AC',
+    'Minibar',
+    'Safe',
+    'Balcony',
+  ],
   bookRoom: 'Book This Room',
   fromPerNight: 'From $142 / Night',
   checkIn: 'Check-in',
@@ -776,10 +843,26 @@ export const destinationPageConfig: DestinationPageConfig = {
   pageTitle: 'Destination',
   breadcrumb: 'Destination',
   items: [
-    { name: 'Paris, France', date: '11 Jun 2020 - 22 Jun 2020', price: '$835' },
-    { name: 'San Francisco', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
-    { name: 'United Arab', date: '11 Jun 2020 - 22 Jun 2020', price: '$750' },
-    { name: 'Singapore', date: '11 Jun 2020 - 22 Jun 2020', price: '$550' },
+    {
+      name: 'Paris, France',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$835',
+    },
+    {
+      name: 'San Francisco',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$750',
+    },
+    {
+      name: 'United Arab',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$750',
+    },
+    {
+      name: 'Singapore',
+      date: '11 Jun 2020 - 22 Jun 2020',
+      price: '$550',
+    },
   ],
 };
 
@@ -787,10 +870,22 @@ export const servicePageConfig: ServicePageConfig = {
   pageTitle: 'Our Services',
   breadcrumb: 'Services',
   items: [
-    { title: 'Airport Transfers', description: 'Discover the comfort and safety we offer for transfers to and from the airport. Our team is always on time and guarantees your safe and comfortable transportation, whether for arrival or departure.' },
-    { title: 'Organized Tours', description: 'Discover the best locations and sights with our organized tours. From cultural landmarks to hidden gems, our team will guide you through unforgettable experiences and unique moments of exploration.' },
-    { title: 'Corporate & Events', description: 'The ideal choice for your business needs. From corporate meetings to major events and conferences, reliable and timely transportation ensures comfort and maintains your professional profile.' },
-    { title: 'Children & Student Transport', description: 'We ensure our young passengers travel with safety, comfort, and responsibility. Our drivers are experienced and committed to a smooth ride.' },
+    {
+      title: 'Airport Transfers',
+      description: 'Discover the comfort and safety we offer for transfers to and from the airport. Our team is always on time and guarantees your safe and comfortable transportation, whether for arrival or departure.',
+    },
+    {
+      title: 'Organized Tours',
+      description: 'Discover the best locations and sights with our organized tours. From cultural landmarks to hidden gems, our team will guide you through unforgettable experiences and unique moments of exploration.',
+    },
+    {
+      title: 'Corporate & Events',
+      description: 'The ideal choice for your business needs. From corporate meetings to major events and conferences, reliable and timely transportation ensures comfort and maintains your professional profile.',
+    },
+    {
+      title: 'Children & Student Transport',
+      description: 'We ensure our young passengers travel with safety, comfort, and responsibility. Our drivers are experienced and committed to a smooth ride.',
+    },
   ],
 };
 
@@ -800,9 +895,16 @@ export const serviceSinglePageConfig: ServiceSinglePageConfig = {
   breadcrumbServiceSingle: 'Service Single',
   title: 'Restaurant & Dining',
   body1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
-  body2: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+  body2: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.',
   allServices: 'All Services',
-  serviceItems: ['Restaurant', 'Spa & Wellness', 'Airport Transfer', 'Concierge', 'Room Service', 'Pool'],
+  serviceItems: [
+    'Restaurant',
+    'Spa & Wellness',
+    'Airport Transfer',
+    'Concierge',
+    'Room Service',
+    'Pool',
+  ],
 };
 
 export const blogPageConfig: BlogPageConfig = {
@@ -810,12 +912,48 @@ export const blogPageConfig: BlogPageConfig = {
   breadcrumb: 'Blog',
   readMore: 'Read More',
   items: [
-    { title: 'Activities for active weekends: hiking, kayaking & cycling', category: 'Tours', date: '10 March 2026', excerpt: 'Trips do not have to be only relaxing. They can turn into active experiences that fill you with energy and create memories...', image: BLOG_CONTENT_IMAGES.hikingActivity },
-    { title: 'How to plan a budget weekend trip', category: 'Tips', date: '10 March 2026', excerpt: 'Weekends are ideal for short getaways, but often the cost makes us think twice. The truth is that with a few tips you can enjoy a great trip without breaking the bank...', image: GREECE_IMAGES.meteora },
-    { title: 'Best sunset spots in the Peloponnese', category: 'Tours', date: '10 March 2026', excerpt: 'The moment the sun sets slowly towards the horizon and the sky fills with orange, pink and golden shades is one of the best ways to end a day of exploring...', image: BLOG_CONTENT_IMAGES.sunsetPeloponnese },
-    { title: 'Guide to the best picnic spots in the Greek countryside', category: 'Tips', date: '27 Feb 2026', excerpt: 'Getting away into nature does not have to be expensive or complicated. A well-planned picnic is enough to bring you closer to the outdoors...', image: BLOG_CONTENT_IMAGES.picnicCountryside },
-    { title: 'Ideas for a relaxed trip with friends or family', category: 'Tours', date: '27 Feb 2026', excerpt: 'A trip does not need to be demanding or packed with activities to be successful. Often the best weekends are the simple ones...', image: GREECE_IMAGES.santorini },
-    { title: '10 unique hiking trails in the Peloponnese', category: 'Tours', date: '27 Feb 2026', excerpt: 'The Peloponnese is a true paradise for hiking lovers. Trails that pass through gorges, forests, rivers and traditional villages...', image: BLOG_CONTENT_IMAGES.hikingTrails },
+    {
+      title: 'Activities for active weekends: hiking, kayaking & cycling',
+      category: 'Tours',
+      date: '10 March 2026',
+      excerpt: 'Trips do not have to be only relaxing. They can turn into active experiences that fill you with energy and create memories...',
+      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80',
+    },
+    {
+      title: 'How to plan a budget weekend trip',
+      category: 'Tips',
+      date: '10 March 2026',
+      excerpt: 'Weekends are ideal for short getaways, but often the cost makes us think twice. The truth is that with a few tips you can enjoy a great trip without breaking the bank...',
+      image: 'https://images.unsplash.com/photo-1660386064971-d5870803764a?w=1920&q=80',
+    },
+    {
+      title: 'Best sunset spots in the Peloponnese',
+      category: 'Tours',
+      date: '10 March 2026',
+      excerpt: 'The moment the sun sets slowly towards the horizon and the sky fills with orange, pink and golden shades is one of the best ways to end a day of exploring...',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+    },
+    {
+      title: 'Guide to the best picnic spots in the Greek countryside',
+      category: 'Tips',
+      date: '27 Feb 2026',
+      excerpt: 'Getting away into nature does not have to be expensive or complicated. A well-planned picnic is enough to bring you closer to the outdoors...',
+      image: 'https://images.unsplash.com/photo-1596050501744-c1721ab5ee11?w=800&q=80',
+    },
+    {
+      title: 'Ideas for a relaxed trip with friends or family',
+      category: 'Tours',
+      date: '27 Feb 2026',
+      excerpt: 'A trip does not need to be demanding or packed with activities to be successful. Often the best weekends are the simple ones...',
+      image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&q=80',
+    },
+    {
+      title: '10 unique hiking trails in the Peloponnese',
+      category: 'Tours',
+      date: '27 Feb 2026',
+      excerpt: 'The Peloponnese is a true paradise for hiking lovers. Trails that pass through gorges, forests, rivers and traditional villages...',
+      image: 'https://images.unsplash.com/photo-1643386165206-d1be6dcc76c2?w=800&q=80',
+    },
   ],
 };
 
@@ -824,12 +962,29 @@ export const blogLeftPageConfig: BlogLeftPageConfig = {
   breadcrumbBlog: 'Blog',
   breadcrumbLeftSidebar: 'Left Sidebar',
   categoriesTitle: 'Categories',
-  categories: ['Travelling', 'Travel', 'Adventure', 'City'],
+  categories: [
+    'Travelling',
+    'Travel',
+    'Adventure',
+    'City',
+  ],
   readMore: 'Read More',
   items: [
-    { title: "Things You Must Need To See While You're In Dubai", category: 'Travelling', date: '25 Feb 2020' },
-    { title: 'Be Careful About This, When You Are In Snow', category: 'Travelling', date: '25 Feb 2020' },
-    { title: '17 places you cannot ignore in Paris', category: 'Travelling', date: '25 Feb 2020' },
+    {
+      title: 'Things You Must Need To See While You\'re In Dubai',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
+    {
+      title: 'Be Careful About This, When You Are In Snow',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
+    {
+      title: '17 places you cannot ignore in Paris',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
   ],
 };
 
@@ -839,9 +994,21 @@ export const blogFullwidthPageConfig: BlogFullwidthPageConfig = {
   breadcrumbFullWidth: 'Full Width',
   readMore: 'Read More',
   items: [
-    { title: "Things You Must Need To See While You're In Dubai", category: 'Travelling', date: '25 Feb 2020' },
-    { title: 'Be Careful About This, When You Are In Snow', category: 'Travelling', date: '25 Feb 2020' },
-    { title: '17 places you cannot ignore in Paris', category: 'Travelling', date: '25 Feb 2020' },
+    {
+      title: 'Things You Must Need To See While You\'re In Dubai',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
+    {
+      title: 'Be Careful About This, When You Are In Snow',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
+    {
+      title: '17 places you cannot ignore in Paris',
+      category: 'Travelling',
+      date: '25 Feb 2020',
+    },
   ],
 };
 
@@ -853,13 +1020,10 @@ export const blogSinglePageConfig: BlogSinglePageConfig = {
     title: 'Activities for Active Weekends: Hiking, Kayaking & Cycling',
     category: 'Tours',
     date: '10 March 2026',
-    body1:
-      "Weekend getaways don't have to be only about relaxation. They can easily turn into active experiences that boost your energy and create unforgettable memories. A weekend is the perfect opportunity to try activities like hiking, kayaking, and cycling—especially in places where nature offers stunning landscapes and endless routes to explore.",
-    body2:
-      'Hiking is one of the best ways to combine exercise with a deep connection to nature. From easy walking paths to more challenging trails, it allows you to discover canyons, green hills, forests, and hidden waterfalls. Cycling is ideal for those who want to cover longer distances and explore more in less time, while kayaking offers a completely different perspective from the water—exploring coastlines, lakes, and rivers in a unique and exciting way.',
-    body3:
-      'Of course, preparation makes all the difference: comfortable clothing, proper footwear, enough water, and routes that match your experience level are essential for a safe and enjoyable trip. An active weekend is more than just exercise—it is a chance to unwind creatively, connect with friends or family, and recharge both physically and mentally. Every step, pedal, or paddle becomes part of an experience that leaves you feeling refreshed and ready for the week ahead. 🚴‍♂️🥾🚣‍♀️',
-    image: BLOG_CONTENT_IMAGES.hikingActivity,
+    body1: 'Weekend getaways don\'t have to be only about relaxation. They can easily turn into active experiences that boost your energy and create unforgettable memories. A weekend is the perfect opportunity to try activities like hiking, kayaking, and cycling—especially in places where nature offers stunning landscapes and endless routes to explore.',
+    body2: 'Hiking is one of the best ways to combine exercise with a deep connection to nature. From easy walking paths to more challenging trails, it allows you to discover canyons, green hills, forests, and hidden waterfalls. Cycling is ideal for those who want to cover longer distances and explore more in less time, while kayaking offers a completely different perspective from the water—exploring coastlines, lakes, and rivers in a unique and exciting way.',
+    body3: 'Of course, preparation makes all the difference: comfortable clothing, proper footwear, enough water, and routes that match your experience level are essential for a safe and enjoyable trip. An active weekend is more than just exercise—it is a chance to unwind creatively, connect with friends or family, and recharge both physically and mentally. Every step, pedal, or paddle becomes part of an experience that leaves you feeling refreshed and ready for the week ahead. 🚴‍♂️🥾🚣‍♀️',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80',
   },
 };
 
@@ -914,6 +1078,15 @@ export const bookingPageConfig: BookingPageConfig = {
 };
 
 export const digitalProductsConfig: DigitalProductsConfig = {
-  enabled: false,
-  products: [],
+  enabled: false,
+  products: [],
+};
+
+export const innerPageHeroImages = {
+  services: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
+  blog: 'https://images.unsplash.com/photo-1753441034632-50d3137f0799?w=1920&q=80',
+  contact: 'https://images.unsplash.com/photo-1688680292966-a8ba3a39d0ab?w=1920&q=80',
+  about: 'https://images.unsplash.com/photo-1596199567658-0b13465b0a80?w=1920&q=80',
+  socialResponsibility: 'https://images.unsplash.com/photo-1704472546450-2fd83176d216?w=1920&q=80',
+  booking: 'https://images.unsplash.com/photo-1694608344824-eec4f8dc3cb8?w=1920&q=80',
 };
